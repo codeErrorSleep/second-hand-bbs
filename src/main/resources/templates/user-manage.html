@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://getbootstrap.com/docs/4.2/examples/dashboard/# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>佛大叮当个人管理</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    .chartjs-render-monitor {
+        -webkit-animation: chartjs-render-animation 0.001s;
+        animation: chartjs-render-animation 0.001s;
+    }</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0"
+       th:href="@{index}">佛大叮当</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign
+                out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">
+                            闲置管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active  text-dark" th:href="@{product-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            闲置管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" th:href="@{user-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-file">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                <polyline points="13 2 13 9 20 9"></polyline>
+                            </svg>
+                            个人管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                           th:href="@{comment-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-shopping-cart">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            留言管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-dark"
+                           th:href="@{announce-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-users">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            公告
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="chartjs-size-monitor"
+                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                <div class="chartjs-size-monitor-expand"
+                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink"
+                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">个人信息</h1>
+            </div>
+
+            <div class="container-fluid">
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-block">
+                                <center class="m-t-30">
+                                    <!--<img src="/imgs/people.png" class="img-circle" width="150"/>-->
+                                    <h4 class="card-title m-t-10" th:text="${user.username}"></h4>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)"
+                                                              class="link"><i
+                                                class="icon-people"></i> <font
+                                                class="font-medium">14</font></a>
+                                        </div>
+                                        <div class="col-4"><a href="javascript:void(0)"
+                                                              class="link"><i
+                                                class="icon-picture"></i> <font
+                                                class="font-medium">22</font></a>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-block">
+                                <form class="form-horizontal form-material" novalidate=""
+                                      method="post"
+                                      th:action="@{updateUser}" th:objict="${user}">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="hidden" placeholder="Johnathan Doe"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{id}">
+                                        </div>
+                                        <label class="col-md-12">姓名</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{username}"
+                                                   th:text="${user.username}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email"
+                                                   class="form-control form-control-line"
+                                                   name="example-email" id="example-email"
+                                                   th:filed="*{email}"
+                                                   th:text="${user.email}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{password}"
+                                                   th:text="${user.password}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{phone}"
+                                                   th:text="${user.phone}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">微信</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{wechat}"
+                                                   th:text="${user.wechat}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success submit">更 新</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:objict="${user}">
+    <div th:text="${user.email}"></div>
+</div>
+<div>ffffffffffff</div>
+<div th:placeholder="${user.email}"></div>
+
+
+<!----></body>
+<script src="/js/jquery-3.4.1.slim.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/feather.min.js"></script>
+<script src="/js/Chart.min.js"></script>
+<script src="/js/dashboard.js"></script>
+
+
+</html>

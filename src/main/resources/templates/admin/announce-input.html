@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://code.z01.com/favicon.ico">
+    <title>发布公告</title>
+    <!-- Bootstrap 核心CSS -->
+
+
+    <!-- Style Css -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../css/custom.css">
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/plugins.css">
+    <script src="../../js/jquery-3.4.1.slim.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" href="#">佛大叮当</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+</nav>
+
+<div class="container">
+
+    <div class="row ">
+
+        <div class="col-md-8 order-md-1">
+            <form class="needs-validation" novalidate="" method="post" th:action="@{uploadAnnounce}"
+                  th:object="${announce}"
+                  enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="title">公告标题</label>
+                        <input type="text" class="form-control" id="title" th:field="*{title}"
+                               placeholder=""
+                               value="" required="">
+                        <div class="invalid-feedback">
+                            标题不能为空.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>公告类型</label>
+                    <select class="form-control" id="type" th:field="*{type}">
+                        <option value="通知">通知</option>
+                        <option value="优惠券">优惠券</option>
+                        <option value="更新">更新</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="content">通知内容</label>
+                    <textarea type="test" class="form-control" id="content" th:field="*{content}"
+                              placeholder="通知内容" required=""></textarea>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">发布公告</button>
+            </form>
+        </div>
+    </div>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2019-2077 邱少</p>
+    </footer>
+</div>
+</body>
+</html>

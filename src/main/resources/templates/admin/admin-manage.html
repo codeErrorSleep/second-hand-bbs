@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://getbootstrap.com/docs/4.2/examples/dashboard/# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>佛大叮当个人管理</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    .chartjs-render-monitor {
+        -webkit-animation: chartjs-render-animation 0.001s;
+        animation: chartjs-render-animation 0.001s;
+    }</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0"
+       th:href="@{index}">佛大叮当管理</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">
+                        闲置管理 <span class="sr-only">(current)</span>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active  text-dark" th:href="@{/admin/admin-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            信息总览 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" th:href="@{/admin/product-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            闲置管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                           th:href="@{/admin/comment-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-shopping-cart">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            留言管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-dark"
+                           th:href="@{/admin/announce-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-users">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            公告
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="chartjs-size-monitor"
+                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                <div class="chartjs-size-monitor-expand"
+                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink"
+                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">数据总览</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <!-- Row -->
+                <h2 class="h2">目前总管理者数:<a th:text="${adminNum}"></a>人</h2>
+                <h2 class="h2">目前总用户数量:<a th:text="${userNum}"></a>人</h2>
+                <h2 class="h2">目前总闲置数量:<a th:text="${productNum}"></a>件</h2>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+
+<!----></body>
+<script src="../js/jquery-3.4.1.slim.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/feather.min.js"></script>
+<script src="../js/Chart.min.js"></script>
+<script src="../js/dashboard.js"></script>
+
+
+
+</html>

@@ -1,0 +1,399 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>产品详情</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/img/icon.png">
+    <!-- Style Css -->
+    <link rel="stylesheet" href="/css/plugins.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<!-- Wrapper -->
+<div id="wrapper" class="wrapper">
+
+
+    <!-- 购买联系方式 -->
+    <!-- Modal -->
+    <div class="modal fade" id="buyModel" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">购买联系方式</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p th:text="@{邮箱:{a} (a=${product.email})}"></p>
+                    <p th:text="@{电话号码:{b} (b=${product.phone})}"></p>
+                    <p th:text="@{微信:{c} (c=${product.wechat})}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Header -->
+    <header class="header sticky-header">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" th:href="@{/index}">佛大叮当</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/index}">首页
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown"   th:if="${session['user']!=null}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:text="${session.user.getUsername()}">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/product-manage}">我的闲置</a>
+                            <a class="dropdown-item" th:href="@{/user-manage}">我的信息</a>
+                            <a class="dropdown-item" th:href="@{/comment-manage}">我的留言</a>
+                            <a class="dropdown-item" th:href="@{/announce-manage}">公告</a>
+                            <a class="dropdown-item" th:href="@{/logout}">退出</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item active " th:if="${session['user']==null}">
+                        <a class="nav-link" th:href="@{/login}">登录
+                            <span
+                                    class="sr-only">(current)
+			                </span></a>
+                    </li>
+                    <li class="nav-item active " th:if="${session['user']==null}">
+                        <a class="nav-link" th:href="@{/register}">注册
+                            <span
+                                    class="sr-only">(current)
+			                </span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Header Middle Area -->
+        <div class="header-middle-area cr-border cr-border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <form class="header-search">
+                            <input type="text" placeholder="Search product...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 col-12">
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="/imgs/logo2.png" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-12">
+                        <a class="btn btn-outline-warning btn-lg btn-block"
+                           th:href="@{/product-input}"
+                           role="button">发 布</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// Header Middle Area -->
+    </header>
+    <!--// Header -->
+
+    <!-- Page Conttent -->
+    <main class="page-content">
+
+        <!-- Product Page Wrapper -->
+        <div class="product-page-wrapper section-padding-bottom-md">
+            <div class="container">
+
+                <!-- Shop Breadcrumb -->
+                <div class="shop-breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#" th:text="${product.type}"></a></li>
+                    </ul>
+                </div>
+                <!--// Shop Breadcrumb -->
+
+                <!-- Poduct Details Wrapper -->
+                <div class="row">
+
+                    <div class="col-lg-9">
+
+                        <!-- Product Details Inner -->
+                        <div class="product-details">
+
+                            <!-- Product Details Left -->
+                            <!--<div class="product-details-left">-->
+                            <!--<div class="product-details-images slider-navigation-2"-->
+                            <!--th:each="imgurl : ${product.imgs}">-->
+                            <!--<a th:href="@{/{img}(img=${imgurl})}" >-->
+                            <!--<img th:src="@{/{img}(img=${imgurl})}" alt="product image">-->
+                            <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="product-details-thumbs slider-navigation-2" th:each="imgurl : ${product.imgs}">-->
+                            <!--<img th:src="@{/{img}(img=${imgurl})}"  alt="product image thumb">-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+
+                            <div id="carouselExampleControls" class="carousel slide"
+                                 data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active"
+                                         th:if="${product.imgs.get(0)}">
+                                        <img class="d-block w-100"
+                                             th:src="@{/{img}(img=${product.imgs.get(0)})}"
+                                             alt="First slide">
+                                    </div>
+                                    <div class="carousel-item"
+                                         th:if="${imglength>1}">
+                                        <img class="d-block w-100"
+                                             th:src="@{/{img}(img=${product.imgs.get(1)})}"
+                                             alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item" th:if="${imglength>2}">
+                                        <img class="d-block w-100"
+                                             th:src="@{/{img}(img=${product.imgs.get(2)})}"
+                                             alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                   role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"
+                                              aria-hidden="false"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                   role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon"
+                                              aria-hidden="false"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+
+                            <!--// Product Details Left -->
+
+                            <!-- Product Details Right -->
+                            <div class="product-details-right">
+                                <h5 class="product-title" th:text="${product.title}"></h5>
+
+                                <p th:text="${product.content}"></p>
+
+                                <div class="price-box">
+                                        <span class="pricebox-price"
+                                              th:text="${product.price}"></span>
+                                </div>
+
+                                <!--<p>交易地址:非洲</p>-->
+
+                                <div class="product-details-quantity">
+                                    <button class="add-to-cart-button" id="buybutton"
+                                            data-toggle="modal" data-target="#buyModel">
+                                        <span>买买买</span>
+                                    </button>
+                                </div>
+
+                                <div class="product-details-socialshare">
+                                    <span>Share :</span>
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-wechat"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-qq"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--// Product Details Right -->
+
+                        </div>
+                        <!--// Product Details Inner -->
+
+                        <!-- Product Details Review -->
+                        <div class="product-descripton-review">
+
+                            <ul class="nav" id="product-description-review" role="tablist">
+                                <li class="nav-item active">
+                                    <a class="nav-link " id="product-reviews-tab" data-toggle="tab"
+                                       href="#product-reviews" role="tab"
+                                       aria-controls="product-reviews" aria-selected="false">评论</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content " id="product-description-review-content">
+                                <div class="tab-pane fade  show active" id="product-reviews"
+                                     role="tabpanel" aria-labelledby="product-reviews-tab">
+                                    <div class="product-review">
+                                        <div class="commentlist" th:if="${commentList}!=null"
+                                             th:each="com: ${commentList}">
+                                            <div class="single-comment">
+                                                <div class="single-comment-thumb">
+                                                    <img
+                                                            src="/img/author-image/author-image-2.png"
+                                                            alt="hastech logo">
+                                                </div>
+                                                <div class="single-comment-content">
+                                                    <div class="single-comment-content-top">
+                                                        <h6 th:text="${com.nickname}"></h6>
+                                                    </div>
+                                                    <p th:text="${com.content}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="commentbox mt-5">
+                                            <h6>发表评论</h6>
+                                            <form class="sn-form"
+                                                  th:action="@{/comment/{id}(id=${product.id})}"
+                                                  th:object="${comment}">
+                                                <div class="sn-form-inner">
+                                                    <div class="single-input">
+                                                        <textarea id="new-review-textbox" cols="30"
+                                                                  rows="5"
+                                                                  th:field="*{content}"></textarea>
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <h3 class="alert alert-warning"
+                                                            th:if="${session['user']==null}">
+                                                            请先登录才可评论
+                                                        </h3>
+                                                        <button class="sn-button sn-button-dark"
+                                                                th:if="${session['user']!=null}"
+                                                                type="submit"><span>发 表</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--// Product Details Review -->
+
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="widgets">
+
+                            <div class="single-widget widget-related-product">
+                                <h5 class="widget-title">同类推荐</h5>
+                                <ul>
+                                    <li>
+                                        <div class="product-item">
+                                            <div class="product-item-images">
+                                                <a href="product-details-right-sidebar.html"
+                                                   class="product-item-image-inner">
+                                                    <img
+                                                            th:src="@{/{img}(img=${product.imgs.get(0)})}"
+                                                            alt="product image">
+                                                </a>
+                                            </div>
+                                            <div class="product-item-content">
+                                                <div class="product-item-content-left">
+                                                    <h5><a
+                                                            href="product-details-right-sidebar.html">test</a>
+                                                    </h5>
+                                                    <div class="price-box">
+                                                        <span class="pricebox-price">100</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="product-item">
+                                            <div class="product-item-images">
+                                                <a href="product-details-right-sidebar.html"
+                                                   class="product-item-image-inner">
+                                                    <img th:src="@{/{img}(img=${product.imgs.get(0)})}"
+                                                         alt="product image">
+                                                </a>
+                                            </div>
+                                            <div class="product-item-content">
+                                                <div class="product-item-content-left">
+                                                    <h5><a
+                                                            href="product-details-right-sidebar.html">test</a>
+                                                    </h5>
+                                                    <div class="price-box">
+                                                        <span class="pricebox-price">100</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="product-item">
+                                            <div class="product-item-images">
+                                                <a href="product-details-right-sidebar.html"
+                                                   class="product-item-image-inner">
+                                                    <img th:src="@{/{img}(img=${product.imgs.get(0)})}"
+                                                         alt="product image">
+                                                </a>
+                                            </div>
+                                            <div class="product-item-content">
+                                                <div class="product-item-content-left">
+                                                    <h5><a
+                                                            href="product-details-right-sidebar.html">test</a>
+                                                    </h5>
+                                                    <div class="price-box">
+                                                        <span class="pricebox-price">100</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--// Poduct Details Wrapper -->
+            </div>
+        </div>
+        <!--// Product Page Wrapper -->
+
+
+    </main>
+    <!--// Page Conttent -->
+
+</div>
+<!--// Wrapper -->
+
+</body>
+
+
+<!-- Js Files -->
+
+<script src="/js/jquery-3.4.1.slim.min.js"></script>
+<script src="/js/modernizr-3.6.0.min.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js" type="application/javascript"></script>
+
+
+</html>
