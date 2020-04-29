@@ -4,7 +4,7 @@
 
 # second-hand-bbs
 
-本项目是一个基于spring boot和spring data jpa的校园二手交易论坛,前端页面主要使用bootstrap4来完成(模板是根据一个西班牙?购物网站改的).
+本项目是一个基于spring boot和spring data jpa的校园二手交易论坛,前端页面主要使用bootstrap4来完成,部分样式参考了一个西班牙购物网站.
 
 ## 技术栈
 - spring boot
@@ -22,29 +22,35 @@
 ## 快速运行
 1. 克隆本项目到本地
 
-    ` git@github.com:504250439/second-hand-bbs.git `
+    ` git clone git@github.com:504250439/second-hand-bbs.git `
 
-2. 将mysql文件夹中上sql文件导入到mysql中
+2. 先在mysql中新建一个 spring 数据库,然后导入本项目中mysql文件夹下的三个sql文件.
+
 3. 根据自己本地情况修改数据库配置，数据库配置在SpringBoot项目的application.properties中
+
 4. 在IntelliJ IDEA中运行项目
 
-**OK，至此，服务端就启动成功了，此时我们直接在地址栏输入http://localhost:8080/index即可访问我们的项目.**
+**OK，至此，服务端就启动成功了，此时我们直接在地址栏输入**
+
+> **http://localhost:8080/index**
+
+**即可访问我们的项目.**
 
 ## 注意事项
-1. 产品图片保存在本地的 E盘second-hand-bbs文件夹当中
+1. 如果导入后只显示项目中的文件，不显示项目结构.可参考[此文章](https://blog.csdn.net/junge1545/article/details/94400741)来解决
+2. 产品图片保存在本地的 E盘second-hand-bbs文件夹当中,可在application.properties中修改图片文件保存位置.
 
 
 ## 部分界面截图
-![](https://s2.ax1x.com/2020/01/02/ltCrwV.md.png)
+![主界面](https://s2.ax1x.com/2020/01/02/ltCrwV.md.png)
 
-![](https://s2.ax1x.com/2020/01/02/ltCWl9.md.png)
+![商品详情页面](https://s2.ax1x.com/2020/01/02/ltCWl9.md.png)
 
-![ltCLSH.md.png](https://s2.ax1x.com/2020/01/02/ltCLSH.md.png)
+![个人的管理页面](https://s2.ax1x.com/2020/01/02/ltCLSH.md.png)
 
 
 
 ## todo
-- 完成readme部分编写
 - 增加redis保存session
 - 整理项目(删除多余部分)
 - 同类推荐功能
