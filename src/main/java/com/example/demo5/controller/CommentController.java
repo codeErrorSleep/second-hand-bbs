@@ -19,6 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
+
+/**
+* @Description:    评论实现类
+* @Author:         qiuShao
+* @CreateDate:     20-5-3 下午8:50
+*/
 @Controller
 public class CommentController {
     @Autowired

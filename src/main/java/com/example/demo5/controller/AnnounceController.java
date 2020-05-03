@@ -23,6 +23,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+/**
+* @Description:    管理员功能类
+* @Author:         qiuShao
+* @CreateDate:     20-5-3 下午8:50
+*/
 @Controller
 @EnableAutoConfiguration
 public class AnnounceController {

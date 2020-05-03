@@ -13,7 +13,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-//    判断是否能够注册
+    /**
+    * 判断是否能够注册
+    * @author      qiushao
+    * @param       user
+    * @return      boolean
+    * @date        20-5-3 下午10:32
+    */
     public boolean registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isEmpty()) {
             userRepository.save(user);
@@ -23,7 +29,14 @@ public class UserService {
         }
     }
 
-//判断是否能够登录
+
+    /**
+    * 判断是否能够登录
+    * @author      qiushao
+    * @param       username,password
+    * @return       user
+    * @date        20-5-3 下午10:33
+    */
     public User checkUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, password);
         return user;

@@ -19,6 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
+
+/**
+* @Description:    管理员主类
+* @Author:         qiuShao
+* @CreateDate:     20-5-3 下午8:49
+*/
 @Controller
 @EnableAutoConfiguration
 public class AdminController {
