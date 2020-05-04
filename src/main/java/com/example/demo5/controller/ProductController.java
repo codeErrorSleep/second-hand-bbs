@@ -40,6 +40,13 @@ public class ProductController {
     @Value("${web.upload-path}")
     private String path;
 
+    /**
+     * 返回商品生成页面
+     * @author      qiushao
+     * @param       [model, session]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:11
+     */
     @RequestMapping("/product-input")
     public String productionInput(Model model,HttpSession session) {
         model.addAttribute("product", new Product());
@@ -47,7 +54,13 @@ public class ProductController {
         return "product-input";
     }
 
-//商品管理界面
+    /**
+     * 商品管理界面
+     * @author      qiushao
+     * @param       [model, session, pageable]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:12
+     */
     @RequestMapping("product-manage")
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.DESC) Pageable pageable) {
@@ -57,7 +70,13 @@ public class ProductController {
         return "product-manage";
     }
 
-//删除商品信息
+    /**
+     * 删除商品信息
+     * @author      qiushao
+     * @param       [id, model, session, pageable]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:12
+     */
     @RequestMapping("/product/delete/{id}")
     public String productDelete(@PathVariable Long id,Model model,HttpSession session,
                            @PageableDefault(size = 8,
@@ -80,7 +99,13 @@ public class ProductController {
 
     }
 
-    //修改商品信息页面
+    /**
+     * 修改商品信息页面
+     * @author      qiushao
+     * @param       [id, model, session]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:12
+     */
     @RequestMapping("/product/update/{id}")
     public String productUpdate(@PathVariable Long id,Model model,HttpSession session) {
         Product product=productService.getAndConvert(id);
@@ -91,7 +116,13 @@ public class ProductController {
 
     }
 
-    //    修改商品信息操作
+    /**
+     * 修改商品信息操作
+     * @author      qiushao
+     * @param       [product, model, session]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:13
+     */
     @RequestMapping(value = "/product/update/{id}", method = RequestMethod.POST)
     public String updateProduct(Product product,Model model,
                                 HttpSession session) throws IllegalStateException{
@@ -102,10 +133,15 @@ public class ProductController {
     }
 
 
-    //   上传商品信息
+    /**
+     * 上传商品信息
+     * @author      qiushao
+     * @param       [product, files, model, session, pageable]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:16
+     */
     @RequestMapping(value = "/uploadProduct", method = RequestMethod.POST)
-    public String uploadProduct(Product product,
-                                @RequestParam("files") MultipartFile[] files,
+    public String uploadProduct(Product product, @RequestParam("files") MultipartFile[] files,
                                 Model model, HttpSession session,@PageableDefault(size = 8, sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) throws IllegalStateException, IOException{
 
@@ -134,8 +170,13 @@ public class ProductController {
         return "index";
     }
 
-
-//获取商品详细信息
+    /**
+     * 获取商品详细信息
+     * @author      qiushao
+     * @param       [id, model]
+     * @return      java.lang.String
+     * @date        20-5-4 上午10:18
+     */
     @RequestMapping("/product/{id}")
     public String product(@PathVariable Long id, Model model) {
         Product p=productService.getAndConvert(id);

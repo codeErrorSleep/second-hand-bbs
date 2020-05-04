@@ -33,7 +33,14 @@ public class CommentController {
     @Autowired
     private ProductService productService;
 
-    //    上传评论
+    /**
+    * 上传评论
+    * @author      qiushao
+    * @param       [id, comment, model, session]
+    * @return      java.lang.String
+    * @exception
+    * @date        20-5-4 上午10:19
+    */
     @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
     String uploadComment(@PathVariable Long id, Comment comment, Model model, HttpSession session){
         comment.setProduct(productService.getAndConvert(id));
@@ -43,8 +50,14 @@ public class CommentController {
     }
 
 
-
-    //删除商品信息
+    /**
+     * 删除商品信息
+     * @author      qiushao
+     * @param       [id, model, session]
+     * @return      java.lang.String
+     * @exception
+     * @date        20-5-4 上午10:19
+     */
     @RequestMapping("/comment/delete/{id}")
     public String commentDelete(@PathVariable Long id,Model model,HttpSession session) {
 //        删除商品信息 boolean
@@ -65,7 +78,13 @@ public class CommentController {
 
 
 
-    //普通用户管理留言信息
+    /**
+    * 普通用户管理留言信息
+    * @author      qiushao
+    * @param       [model, session, pageable]
+    * @return      java.lang.String
+    * @date        20-5-4 上午10:20
+    */
     @RequestMapping("comment-manage")
     public String commentManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {

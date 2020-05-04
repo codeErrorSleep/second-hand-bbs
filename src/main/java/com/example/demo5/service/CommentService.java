@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+/**
+* @Description:    评论服务类
+* @Author:         qiuShao
+* @CreateDate:     20-5-4 上午10:20
+*/
 @Service
 public class CommentService {
     @Autowired
@@ -27,19 +32,37 @@ public class CommentService {
     }
 
 
-    //    分页获取最新的商品信息
+    /**
+    * 分页获取最新的商品信息
+    * @author      qiushao
+    * @param       pageable
+    * @return      Page<Comment>
+    * @date        20-5-4 上午10:20
+    */
     public Page<Comment> listComment(Pageable pageable) {
         return commentRepository.findAll(pageable);
     }
 
-    //    分页获取最新的商品信息
+    /**
+     * 分页获取最新的商品信息
+     * @author      qiushao
+     * @param       pageable
+     * @return      Page<Comment>
+     * @date        20-5-4 上午10:20
+     */
     public Page<Comment> listComment(Long id,Pageable pageable) {
         return commentRepository.findByUserId(id,pageable);
     }
 
 
 
-    //    删除留言信息
+    /**
+    * 删除留言信息
+    * @author      qiushao
+    * @param       id
+    * @return      boolean
+    * @date        20-5-4 上午10:21
+    */
     public boolean deleteComment(Long id){
         try {
             commentRepository.deleteById(id);

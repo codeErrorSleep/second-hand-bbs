@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+
+/**
+* @Description:    公告服务类
+* @Author:         qiuShao
+* @CreateDate:     20-5-4 上午10:22
+*/
 @Service
 public class AnnounceService {
     @Autowired
