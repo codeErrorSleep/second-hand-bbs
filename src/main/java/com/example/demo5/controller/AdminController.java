@@ -106,7 +106,6 @@ public class AdminController {
     @RequestMapping("admin/product-manage")
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
-//        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("page",productService.listProduct(pageable));
         return "admin/product-manage";
     }
