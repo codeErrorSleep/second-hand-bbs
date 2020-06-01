@@ -6,6 +6,16 @@
 
 本项目是一个基于spring boot和spring data jpa的校园二手交易论坛,前端页面主要使用bootstrap4来完成,部分样式参考了一个西班牙购物网站.
 
+
+
+## 更新
+
+- 在管理员页面增加数据可视化组件
+
+
+
+
+
 ## 技术栈
 - spring boot
 - spring data jpa
@@ -33,6 +43,8 @@
 **OK，至此，服务端就启动成功了，此时我们直接在地址栏输入**
 
 > **http://localhost:8080/index**
+
+**http://localhost:8080/admin/login** 进入后台管理员页面
 
 **即可访问我们的项目.**
 

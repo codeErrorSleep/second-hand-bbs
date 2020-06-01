@@ -14,15 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
+//import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 
-
-/**
-* @Description:    注册与登录的控制类
-* @Author:         qiuShao
-* @CreateDate:     20-5-3 下午10:07
-*/
 @Controller
 @EnableAutoConfiguration
 public class UserController {
@@ -32,13 +26,6 @@ public class UserController {
     @Autowired
     private ProductService productService;
 
-
-    /**
-     * 返回登录界面
-     * @author      qiushao
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:14
-     */
     @RequestMapping("/login")
     String login(Model model) {
         model.addAttribute("user", new User());
@@ -47,12 +34,7 @@ public class UserController {
 
 
 
-    /**
-     * 返回注册界面
-     * @author      qiushao
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:14
-     */
+
     @RequestMapping("/register")
     String register(Model model) {
         model.addAttribute("user", new User());
@@ -61,13 +43,7 @@ public class UserController {
 
 
 
-    /**
-     * 接收注册用户的表单并提交处理
-     * @author      qiushao
-     * @param       [user, model]
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:17
-     */
+    //    路径映射
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     String registerUser(User user, Model model) {
         if(userService.registerUser(user)){
@@ -79,13 +55,8 @@ public class UserController {
         }
     }
 
-    /**
-     * 处理提交的注册表单
-     * @author      qiushao
-     * @param       [a, model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:18
-     */
+
+//    判断用户登录
     @RequestMapping(value = "/userLogin",method = RequestMethod.POST)
     String userLogin(User a, Model model, HttpSession session,@PageableDefault(size = 8, sort = {
             "createTime"},
@@ -103,28 +74,15 @@ public class UserController {
     }
 
 
-    /**
-     * 返回用户个人页面
-     * @author      qiushao
-     * @param       [model, session]
-     * @return      java.lang.String
-     * @exception
-     * @date        20-5-3 下午10:28
-     */
+    //    主页控制
     @RequestMapping("/user-manage")
     String usermanage(Model model, HttpSession session) {
         model.addAttribute("user", session.getAttribute("user"));
         return "user-manage";
     }
 
-    /**
-     * 更新用户信息
-     * @author      qiushao
-     * @param       [user, model, seesion]
-     * @return      java.lang.String
-     * @exception
-     * @date        20-5-3 下午10:29
-     */
+
+//更新用户信息
     @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
     String updateUser(User user,Model model,HttpSession seesion){
         System.out.print(user.getId());

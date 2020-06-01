@@ -4,6 +4,7 @@ package com.example.demo5.domain;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
 @Table(name = "comment")
 public class Comment {

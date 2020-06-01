@@ -19,12 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
-
-/**
-* @Description:    管理员主类
-* @Author:         qiuShao
-* @CreateDate:     20-5-3 下午8:49
-*/
 @Controller
 @EnableAutoConfiguration
 public class AdminController {
@@ -48,13 +42,7 @@ public class AdminController {
     }
 
 
-    /**
-     * 登录到管理员
-     * @author      qiushao
-     * @param       [a, model, session]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:23
-     */
+//    登录到管理员
     @RequestMapping(value = "admin/adminUserLogin",method = RequestMethod.POST)
     String adminUserLogin(AdminUser a, Model model, HttpSession session){
         AdminUser adminuser = adminUserService.checkUser(a.getUsername(),a.getPassword());
@@ -69,13 +57,7 @@ public class AdminController {
         }
     }
 
-    /**
-     * 管理页面
-     * @author      qiushao
-     * @param       [model, session]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:23
-     */
+//    管理页面
     @RequestMapping("admin/admin-manage")
     String adminMange(Model model, HttpSession session) {
 //没登录是访问返回到登录界面
@@ -96,27 +78,17 @@ public class AdminController {
         return "admin/admin-manage";
     }
 
-    /**
-     * 管理商品信息
-     * @author      qiushao
-     * @param       [model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:23
-     */
+
+    //管理商品信息
     @RequestMapping("admin/product-manage")
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
+//        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("page",productService.listProduct(pageable));
         return "admin/product-manage";
     }
 
-    /**
-     * 管理留言信息
-     * @author      qiushao
-     * @param       [model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:24
-     */
+    //管理留言信息
     @RequestMapping("admin/comment-manage")
     public String commentManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {

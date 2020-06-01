@@ -8,11 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-/**
-* @Description:    用户表仓库类
-* @Author:         qiuShao
-* @CreateDate:     20-5-3 下午10:35
-*/
 public interface UserRepository extends JpaRepository<User,Long> {
     public List<User> findByUsername(String name);
 

@@ -32,13 +32,7 @@ public class IndexController {
     @Autowired
     private CommentService commentService;
 
-    /**
-     * 主页面控制类
-     * @author      qiushao
-     * @param       [model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:47
-     */
+//    主页控制
     @RequestMapping("/index")
     String index(Model model, HttpSession session,@PageableDefault(size = 8, sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) {
@@ -49,31 +43,21 @@ public class IndexController {
         return "index";
     }
 
-    /**
-     * 返回搜索页面信息
-     * @author      qiushao
-     * @param       [query, model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:49
-     */
-    @PostMapping(value = "search")
+//搜索
+    @RequestMapping(value = "search",method = RequestMethod.POST)
     String search(@RequestParam String query,Model model, HttpSession session,
-                  @PageableDefault(size = 8, direction = Sort.Direction.DESC) Pageable pageable){
+                  @PageableDefault(size = 8,
+            direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("page", productService.listProduct("%"+query+"%", pageable));
 
         return "search";
     }
 
-    /**
-     * 主页面的分类显示(对应 化妆类,电脑类等)
-     * @author      qiushao
-     * @param       [type, model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-3 下午10:50
-     */
-    @GetMapping(value = "index{type}")
+    //主页中不同的物品分类
+    @RequestMapping(value = "index{type}",method = RequestMethod.GET)
     String indexType(@PathVariable String type,Model model, HttpSession session,
-                  @PageableDefault(size = 8, direction = Sort.Direction.DESC) Pageable pageable){
+                  @PageableDefault(size = 8,
+                          direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("type",type);
         model.addAttribute("page", productService.listProductType(type, pageable));
         return "index";

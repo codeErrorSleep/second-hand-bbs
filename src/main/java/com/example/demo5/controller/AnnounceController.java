@@ -23,13 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-/**
-* @Description:    公告服务类
-* @Author:         qiuShao
-* @CreateDate:     20-5-3 下午8:50
-*/
 @Controller
 @EnableAutoConfiguration
 public class AnnounceController {
@@ -37,13 +30,7 @@ public class AnnounceController {
     @Autowired
     private AnnounceService announceService;
 
-    /**
-     *  管理员管理公告面板
-     * @author      qiushao
-     * @param       [model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:22
-     */
+//    管理员管理公告面板
     @RequestMapping("admin/announce-manage")
     public String adminAnnounceManage(Model model, HttpSession session,@PageableDefault(size = 8,
             sort = {"createTime"},
@@ -52,13 +39,7 @@ public class AnnounceController {
         return "admin/announce-manage";
     }
 
-    /**
-     * 普通户用获取公告
-     * @author      qiushao
-     * @param       [model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:22
-     */
+//    普通户用获取公告
     @RequestMapping("announce-manage")
     public String announceManage(Model model, HttpSession session,@PageableDefault(size = 8,
             sort = {"createTime"},
@@ -80,13 +61,7 @@ public class AnnounceController {
         return "admin/announce-input";
     }
 
-    /**
-     * 上传公告信息
-     * @author      qiushao
-     * @param       [announce, model, session, pageable]
-     * @return      java.lang.String
-     * @date        20-5-4 上午10:23
-     */
+    //   上传公告信息
     @RequestMapping(value = "admin/uploadAnnounce", method = RequestMethod.POST)
     public String AnnounceInput(Announce announce, Model model, HttpSession session,@PageableDefault(size = 8,
             sort = {"createTime"},

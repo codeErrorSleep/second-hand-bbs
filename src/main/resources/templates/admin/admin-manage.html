@@ -57,7 +57,7 @@
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0"
-       th:href="@{../index}">佛大叮当管理</a>
+       th:href="@{index}">佛大叮当管理</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign out</a>
@@ -151,13 +151,76 @@
                 </div>
             </div>
 
-            <div class="container-fluid">
-                <!-- Row -->
-                <h2 class="h2">目前总管理者数:<a th:text="${adminNum}"></a>人</h2>
-                <h2 class="h2">目前总用户数量:<a th:text="${userNum}"></a>人</h2>
-                <h2 class="h2">目前总闲置数量:<a th:text="${productNum}"></a>件</h2>
-
+            <div class="white-box">
+                <div class="row row-in">
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
+                                <h5 class="text-muted vb">用户数量</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-success" th:text="${userNum}"></h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon=""></i>
+                                <h5 class="text-muted vb">闲置数量</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-info" th:text="${productNum}"></h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon=""></i>
+                                <h5 class="text-muted vb">管理者数</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-warning" th:text="${adminNum}"></h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 row-in-br">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon=""></i>
+                                <h5 class="text-muted vb">在线人数</h5>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="counter text-right m-t-15 text-danger" th:text="${adminNum}"></h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div id="mainCharts" class="m-2 p-2"  style="width: 1000px;height:500px;"></div>
+
+
+
+
         </main>
     </div>
 </div>
@@ -167,9 +230,34 @@
 <script src="../js/jquery-3.4.1.slim.min.js"></script>
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script src="../js/feather.min.js"></script>
-<script src="../js/Chart.min.js"></script>
-<script src="../js/dashboard.js"></script>
+<script src="../js/echarts.min.js"></script>
 
+
+
+<script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('mainCharts'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '闲置物品变化'
+                },
+                xAxis: {
+                        type: 'category',
+                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: [820, 932, 901, 934, 1290, 1330, 1320],
+                        type: 'line'
+                    }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
 
 
 </html>

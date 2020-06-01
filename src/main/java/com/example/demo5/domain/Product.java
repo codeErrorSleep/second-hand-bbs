@@ -31,7 +31,6 @@ public class Product {
     @ElementCollection
     private List<String> imgs;
 
-//    多对一
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;

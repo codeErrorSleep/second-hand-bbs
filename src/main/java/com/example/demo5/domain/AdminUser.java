@@ -1,6 +1,5 @@
 package com.example.demo5.domain;
 
-
 import javax.persistence.*;
 
 @Entity
