@@ -1,7 +1,7 @@
 package com.example.demo5.domain;
 
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import com.example.demo5.system.domain.AdminUser;
 
 import javax.persistence.*;
 import java.util.Date;

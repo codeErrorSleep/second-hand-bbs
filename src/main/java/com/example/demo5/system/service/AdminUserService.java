@@ -1,8 +1,8 @@
-package com.example.demo5.service;
+package com.example.demo5.system.service;
 
 
-import com.example.demo5.dao.AdminRepository;
-import com.example.demo5.domain.AdminUser;
+import com.example.demo5.system.dao.AdminRepository;
+import com.example.demo5.system.domain.AdminUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

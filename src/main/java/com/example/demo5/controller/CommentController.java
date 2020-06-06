@@ -1,7 +1,6 @@
 package com.example.demo5.controller;
 
 
-import com.example.demo5.domain.AdminUser;
 import com.example.demo5.domain.Comment;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
@@ -15,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 

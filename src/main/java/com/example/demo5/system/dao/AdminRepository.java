@@ -1,6 +1,6 @@
-package com.example.demo5.dao;
+package com.example.demo5.system.dao;
 
-import com.example.demo5.domain.AdminUser;
+import com.example.demo5.system.domain.AdminUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

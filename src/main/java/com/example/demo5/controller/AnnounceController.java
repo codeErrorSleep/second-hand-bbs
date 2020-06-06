@@ -1,11 +1,9 @@
 package com.example.demo5.controller;
 
 
-import com.example.demo5.domain.AdminUser;
+import com.example.demo5.system.domain.AdminUser;
 import com.example.demo5.domain.Announce;
-import com.example.demo5.domain.Product;
 import com.example.demo5.service.AnnounceService;
-import com.example.demo5.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Pageable;
@@ -15,13 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @EnableAutoConfiguration

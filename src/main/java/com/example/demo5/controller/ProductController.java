@@ -1,13 +1,12 @@
 package com.example.demo5.controller;
 
-import com.example.demo5.domain.AdminUser;
+import com.example.demo5.system.domain.AdminUser;
 import com.example.demo5.domain.Comment;
 import com.example.demo5.domain.Product;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
 import com.example.demo5.util.FileUtils;
-import org.hibernate.annotations.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -19,9 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.print.DocFlavor;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

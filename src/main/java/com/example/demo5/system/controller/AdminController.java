@@ -1,14 +1,13 @@
-package com.example.demo5.controller;
+package com.example.demo5.system.controller;
 
-import com.example.demo5.dao.UserRepository;
-import com.example.demo5.domain.AdminUser;
-import com.example.demo5.service.AdminUserService;
+import com.example.demo5.system.domain.AdminUser;
+import com.example.demo5.system.service.AdminUserService;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
 import com.example.demo5.service.UserService;
+import com.example.demo5.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -35,7 +34,10 @@ public class AdminController {
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping("admin/login")
+
+
+
+    @RequestMapping({"admin/login","admin"})
     String login(Model model) {
         model.addAttribute("adminUser", new AdminUser());
         return "admin/login";
@@ -81,7 +83,7 @@ public class AdminController {
 
     //管理商品信息
     @RequestMapping("admin/product-manage")
-    public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
+    public String productManager(Model model,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
 //        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("page",productService.listProduct(pageable));
@@ -90,12 +92,13 @@ public class AdminController {
 
     //管理留言信息
     @RequestMapping("admin/comment-manage")
-    public String commentManager(Model model,HttpSession session,@PageableDefault(size = 8,
+    public String commentManager(Model model,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
 //        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("commentList",commentService.listComment(pageable));
         return "admin/comment-manage";
     }
+
 
 
 
