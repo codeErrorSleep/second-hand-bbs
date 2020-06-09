@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class RoleService {
 
@@ -26,6 +28,39 @@ public class RoleService {
         return roleRepository.findAll(pageable);
     }
 
+
+    public boolean addRole(Role role){
+        if (roleRepository.findByRoleName(role.getRoleName()).isEmpty()) {
+            role.setCreateTime(new Date());
+            roleRepository.save(role);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean updateRole(Role role){
+        role.setCreateTime(new Date());
+        roleRepository.save(role);
+        return true;
+    }
+
+
+    public boolean deleteRole(Long roleId){
+        try {
+            System.out.println(roleId.getClass().getName());
+            System.out.println(roleId);
+
+
+            roleRepository.deleteByRoleId(roleId);
+
+
+        }catch (Exception e){
+            return false;
+        }finally {
+            return true;
+        }
+    }
 
 
 }
