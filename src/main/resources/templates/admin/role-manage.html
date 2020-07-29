@@ -185,12 +185,12 @@
                             <text th:case="false"> </text>
                         </td>
                         <td  th:text="${role.createTime}"></td>
-<!--                        <td>-->
-<!--                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#roleUpdate"-->
-<!--                                    th:data-whatever="${role.roleId}" th:data-whatever1="${role.roleName}"-->
-<!--                                    th:data-whatever2="${role.remark}" th:data-whatever3="${role.roleSign}">修改</button>-->
-<!--                            <a  class="btn btn-outline-danger btn-sm" th:href="@{/role/delete/{roleId}(roleId=${role.roleId})}">删除</a>-->
-<!--                        </td>-->
+                        <td>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#roleUpdate"
+                                    th:data-roleId="${role.roleId}" th:data-roleName="${role.roleName}"
+                                    th:data-remark="${role.remark}" th:data-roleKey="${role.roleKey}">修改</button>
+                            <a  class="btn btn-outline-danger btn-sm" th:href="@{/role/delete/{roleId}(roleId=${role.roleId})}">删除</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -198,34 +198,42 @@
     </div>
 </div>
 
-<!--&lt;!&ndash;弹出修改的模态框&ndash;&gt;-->
-<!--<div class="modal fade" id="roleUpdate" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h5 class="modal-title" id="roleUpdateModalLabel">修改角色</h5>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--&lt;!&ndash;                角色表单&ndash;&gt;-->
-<!--                <form method="post" th:action="@{updateRole}" th:object="${role}">-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="roleIdInput" class="col-sm-3 col-form-label">角色编号</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" readonly class="form-control" id="roleIdInput" th:field="*{roleId}" >-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="roleNameInput" class="col-sm-3 col-form-label">角色名称</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" class="form-control" id="roleNameInput" th:field="*{roleName}">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="remarkInput" class="col-sm-3 col-form-label">备注</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" class="form-control" id="remarkInput"  th:field="*{remark}">-->
-<!--                        </div>-->
-<!--                    </div>-->
+<!--弹出修改的模态框-->
+<div class="modal fade" id="roleUpdate" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleUpdateModalLabel">修改角色</h5>
+            </div>
+            <div class="modal-body">
+<!--                角色表单-->
+                <form method="post" th:action="@{updateRole}" th:object="${role}">
+                    <div class="form-group row">
+                        <label for="updateRoleId" class="col-sm-3 col-form-label">角色id</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleId" th:field="*{roleId}" readonly>
+                            <!--                            <input type="text" class="form-control" id="roleKeyInput" >-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRoleKey" class="col-sm-3 col-form-label">角色类型</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleKey" th:field="*{roleKey}">
+<!--                            <input type="text" class="form-control" id="roleKeyInput" >-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRoleName" class="col-sm-3 col-form-label">角色名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleName" th:field="*{roleName}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRemark" class="col-sm-3 col-form-label">备注</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRemark"  th:field="*{remark}">
+                        </div>
+                    </div>
 <!--                    <div class="form-group row">-->
 <!--                        <label for="roleSignInput" class="col-sm-3 col-form-label">权限</label>-->
 <!--                        <div class="col-sm-9">-->
@@ -233,60 +241,60 @@
 <!--                        </div>-->
 <!--                    </div>-->
 
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
-<!--                        <button type="submit" class="btn btn-primary">更新</button>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">更新</button>
+                    </div>
+                </form>
+            </div>
 
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
+        </div>
+    </div>
+</div>
 
 
-<!--&lt;!&ndash;添加的模态框&ndash;&gt;-->
-<!--<div class="modal fade" id="roleAdd" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">-->
-<!--    <div class="modal-dialog" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h5 class="modal-title" id="roleAddModalLabel">添加角色</h5>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                &lt;!&ndash;                角色表单&ndash;&gt;-->
-<!--                <form  method="post" th:action="@{addRole}" th:object="${role}">-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="roleNameInput" class="col-sm-3 col-form-label">角色名称</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" class="form-control"  th:field="*{roleName}">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="remarkInput" class="col-sm-3 col-form-label">备注</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" class="form-control"  th:field="*{remark}">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="form-group row">-->
-<!--                        <label for="roleSignInput" class="col-sm-3 col-form-label">权限</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                            <input type="text" class="form-control"  th:field="*{roleSign}">-->
-<!--                        </div>-->
-<!--                    </div>-->
 
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
-<!--                        <button type="submit" class="btn btn-primary" >确定</button>-->
-<!--                    </div>-->
-<!--                </form>-->
 
-<!--            </div>-->
+<!--添加的模态框-->
+<div class="modal fade" id="roleAdd" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleAddModalLabel">添加角色</h5>
+            </div>
+            <div class="modal-body">
+                <!--                角色表单-->
+                <form  method="post" th:action="@{addRole}" th:object="${role}">
+                    <div class="form-group row">
+                        <label for="roleKeyInput" class="col-sm-3 col-form-label">角色类型</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="roleKeyInput" th:field="*{roleKey}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="roleNameInput" class="col-sm-3 col-form-label">角色名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="roleNameInput" th:field="*{roleName}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="remarkInput" class="col-sm-3 col-form-label">备注</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="remarkInput" th:field="*{remark}">
+                        </div>
+                    </div>
 
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" >确定</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -310,16 +318,23 @@
       $('#roleUpdate').on('show.bs.modal', function (event) {
 <!--      读取绑定的信息-->
       var button = $(event.relatedTarget)
-      var roleId= button.data('whatever')
-      var roleName= button.data('whatever1')
-      var remake = button.data('whatever2')
-      var roleSign= button.data('whatever3')
+      var roleKey= button.data('roleKey')
+      var roleName= button.data('roleName')
+      var remark = button.data('remark')
+      var roleId=button.data('roleId')
 <!--      修改input中的数据-->
       var modal = $(this)
-      modal.find('.modal-body #roleIdInput').val(roleId)
-      modal.find('.modal-body #roleNameInput').val(roleName)
-      modal.find('.modal-body #remarkInput').val(remake)
-      modal.find('.modal-body #roleSignInput').val(roleSign)
+      modal.find('.modal-body #updateRoleKey').val(roleKey)
+      modal.find('.modal-body #updateRoleName').val(roleName)
+      modal.find('.modal-body #updateRemark').val(remark)
+      modal.find('.modal-body #updateRoleId').val(roleId)
+
+      console.log(roleName)
+      console.log(roleKey)
+      console.log(remark)
+      console.log(roleId)
+
+<!--      modal.find('.modal-body #roleSignInput').val(roleSign)-->
 })
 
 </script>

@@ -1,8 +1,10 @@
 package com.example.demo5.controller;
 
 
-import com.example.demo5.system.domain.Role;
+import com.example.demo5.domain.Role;
 import com.example.demo5.service.RoleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +32,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    private final Logger log= LoggerFactory.getLogger(RoleController.class);
 
     //角色管理
     @RequestMapping("admin/roles")
@@ -37,7 +40,7 @@ public class RoleController {
             direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("role",new Role());
         model.addAttribute("roleList",roleService.listRole(pageable));
-        return "admin/roles";
+        return "admin/role-manage";
     }
 
     /**
@@ -47,11 +50,14 @@ public class RoleController {
     */
     @RequestMapping(value = "admin/addRole", method = RequestMethod.POST)
     String addRole(Role role, Model model) {
-        System.out.println(role.getRemark());
+        log.info("准备添加角色"+role.getRoleName());
+        if(roleService.addRole(role)){
+            log.info("添加成功"+role.toString());
+        }else{
+            log.info("添加失败"+role.getRoleName());
+        }
 
-        roleService.addRole(role);
-
-        return "redirect:/admin/roles";
+        return "redirect:/admin/role-manage";
     }
 
 
@@ -62,9 +68,9 @@ public class RoleController {
     */
     @RequestMapping(value = "admin/updateRole", method = RequestMethod.POST)
     String updateRole(Role role, Model model) {
-        System.out.println(role.getRemark());
-        roleService.updateRole(role);
-        return "redirect:/admin/roles";
+        log.info("更新角色信息"+role.getRoleId());
+//        roleService.updateRole(role);
+        return "redirect:/admin/role-manage";
     }
 
 
@@ -79,14 +85,14 @@ public class RoleController {
 //        删除角色信息 boolean
         if(roleService.deleteRole(roleId)){
             model.addAttribute("message","成功删除商品");
-            System.out.println("成功删除商品"+roleId);
+            log.info("成功删除角色"+roleId);
         }else{
             model.addAttribute("message","删除商品失败");
-            System.out.println("删除商品失败"+roleId);
+            log.info("删除角色失败"+roleId);
 
         }
 
-        return "redirect:/admin/roles";
+        return "redirect:/admin/role-manage";
 
 
 

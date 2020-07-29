@@ -162,7 +162,7 @@
                                  data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active"
-                                         th:if="${product.imgs.get(0)}">
+                                         th:if="${product.imgs.size()>0}">
                                         <img class="d-block w-100"
                                              th:src="@{/{img}(img=${product.imgs.get(0)})}"
                                              alt="First slide">

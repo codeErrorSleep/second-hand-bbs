@@ -39,7 +39,7 @@ public class IndexController {
 
 //    主页控制
     @GetMapping({"/","/index"})
-    String index(Model model, HttpSession session,@PageableDefault(size = 8, sort = {"createTime"},
+    String index(Model model, HttpSession session,@PageableDefault(size = 16, sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) {
 //        model.addAttribute("user",session.getAttribute("user"));
         model.addAttribute("user", session.getAttribute("user"));

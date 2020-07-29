@@ -6,6 +6,8 @@ import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
 import com.example.demo5.util.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,6 +24,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 @Controller
 @EnableAutoConfiguration
 public class ProductController {
@@ -36,6 +40,9 @@ public class ProductController {
     @Value("${web.upload-path}")
     private String path;
 
+    //    使用默认
+    private final Logger log= LoggerFactory.getLogger(ProductController.class);
+
     @RequestMapping("/product-input")
     public String productionInput(Model model,HttpSession session) {
         model.addAttribute("product", new Product());
@@ -48,7 +55,6 @@ public class ProductController {
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.DESC) Pageable pageable) {
         User user=((User) session.getAttribute("user"));
-//        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("page",productService.listProduct(user.getId(),pageable));
         return "product-manage";
     }
@@ -64,7 +70,6 @@ public class ProductController {
         }else{
             model.addAttribute("message","删除商品失败");
         }
-
 //      根据用户角色的不同返回不同的页面
         if (session.getAttribute("user")!=null){
             return "redirect:/product-manage";
@@ -96,38 +101,29 @@ public class ProductController {
         return "redirect:/product-manage";
     }
 
-
-    //   上传商品信息
-    @RequestMapping(value = "/uploadProduct", method = RequestMethod.POST)
+    /**
+     *  上传商品信息
+     *@Author: qiuwenhao
+     *@date: 2020/7/29
+     */
+    @PostMapping("/uploadProduct")
     public String uploadProduct(Product product,
                                 @RequestParam("files") MultipartFile[] files,
-                                Model model, HttpSession session,@PageableDefault(size = 8, sort = {"createTime"},
-            direction = Sort.Direction.DESC) Pageable pageable) throws IllegalStateException, IOException{
-
-        product.setUser((User) session.getAttribute("user"));
-//        保存图片文件
-        List<String> imgs= new ArrayList();
-        if (null != files && files.length > 0) {
-            for (MultipartFile file : files) {
-                // 测试MultipartFile接口的各个方法
-//                System.out.println("文件原名称OriginalFileName=" + file.getOriginalFilename());
-//                System.out.println("文件大小Size=" + file.getSize() + "byte or " + file.getSize() / 1024 + "KB");
-//                保存文件
-                if (file.getSize()!=0){
-                    imgs.add(product.getTitle()+"/"+file.getOriginalFilename());
-                    FileUtils.saveFile(file,path,product.getTitle());
-                    System.out.print(path+"/"+file.getOriginalFilename());
-                }
-            }
-
+                                Model model, HttpSession session,
+                                @PageableDefault(size = 8, sort = {"createTime"}, direction = Sort.Direction.DESC) Pageable pageable)
+            throws IllegalStateException, IOException{
+        try{
+            productService.saveProduct(product,files,session);
+        }catch (Exception e){
+            log.error(e.toString());
         }
-        product.setImgs(imgs);
-//        保存上传信息
-        Product p;
-        p=productService.saveProduct(product);
+        log.info("保存商品信息成功");
         model.addAttribute("page",productService.listProduct(pageable));
         return "index";
     }
+
+
+
 
 
 //获取商品详细信息

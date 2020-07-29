@@ -1,7 +1,7 @@
 package com.example.demo5.service;
 
 import com.example.demo5.dao.RoleRepository;
-import com.example.demo5.system.domain.Role;
+import com.example.demo5.domain.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +30,9 @@ public class RoleService {
 
     public boolean addRole(Role role){
         if (roleRepository.findByRoleName(role.getRoleName()).isEmpty()) {
-            role.setCreateTime(new Date());
+            Date date=new Date();
+            role.setCreateTime(date);
+            role.setUpdateTime(date);
             roleRepository.save(role);
             return true;
         } else {
@@ -39,7 +41,8 @@ public class RoleService {
     }
 
     public boolean updateRole(Role role){
-        role.setCreateTime(new Date());
+        Date date=new Date();
+        role.setUpdateTime(date);
         roleRepository.save(role);
         return true;
     }

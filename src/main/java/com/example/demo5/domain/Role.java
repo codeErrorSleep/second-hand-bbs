@@ -10,11 +10,11 @@ public class Role {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long roleId;
 
     @Column(nullable = false)
     private String roleName;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String roleKey;
 
     /*启用状态*/
@@ -28,12 +28,12 @@ public class Role {
     /*创建者(使用用户id或者name标记)*/
     private String create_by;
 
-    public Long getId() {
-        return id;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getRoleName() {
@@ -44,16 +44,16 @@ public class Role {
         this.roleName = roleName;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public String getRoleKey() {
         return roleKey;
     }
 
     public void setRoleKey(String roleKey) {
         this.roleKey = roleKey;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public void setStatus(String status) {

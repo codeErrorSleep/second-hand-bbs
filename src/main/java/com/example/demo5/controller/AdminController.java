@@ -1,5 +1,6 @@
 package com.example.demo5.controller;
 
+import com.example.demo5.domain.Role;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.*;
 import org.slf4j.Logger;
@@ -107,6 +108,7 @@ public class AdminController {
     @RequestMapping("admin/role-manage")
     public String roleManage(Model model,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
+        model.addAttribute("role",new Role());
         model.addAttribute("roleList",roleService.listRole(pageable));
         return "admin/role-manage";
     }
