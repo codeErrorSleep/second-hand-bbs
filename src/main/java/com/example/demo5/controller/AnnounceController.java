@@ -1,7 +1,6 @@
 package com.example.demo5.controller;
 
 
-import com.example.demo5.system.domain.AdminUser;
 import com.example.demo5.domain.Announce;
 import com.example.demo5.service.AnnounceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +59,6 @@ public class AnnounceController {
     public String AnnounceInput(Announce announce, Model model, HttpSession session,@PageableDefault(size = 8,
             sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) throws IllegalStateException, IOException {
-
-        announce.setAdminUser((AdminUser) session.getAttribute("adminuser"));
 //        保存上传信息
         Announce p;
         p=announceService.saveAnnounce(announce);

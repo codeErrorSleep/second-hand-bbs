@@ -1,9 +1,0 @@
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (39, 'father', 'father', '504250439@qq.com', '13138283670', 'sefseeasf');
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (40, 'test', 'test', NULL, NULL, NULL);
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (41, 'amy', 'amy', NULL, NULL, NULL);
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (42, 'test2', 'test2', NULL, NULL, NULL);
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (83, 'etstsetes', 'testetst2', NULL, NULL, NULL);
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (84, 'testse', 'tests', '504250439@qq.com', '13138283670', 'sefseeasf');
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (109, 'yes', 'yes', 'asdf@fff.ff', '45252', 'fdgfgdsfg');
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (120, 'safesaef', 'estt', '934387764@qq.com', '13138283670', 'sdaf');
-INSERT INTO `user`(`id`, `password`, `username`, `email`, `phone`, `wechat`) VALUES (126, 'father', 'fatherfdsgg', '934387764@qq.com', '13138283670', 'esdfasef');

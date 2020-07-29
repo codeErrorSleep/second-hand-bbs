@@ -2,9 +2,10 @@ package com.example.demo5.domain;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "sys_user")
 public class User {
 
     @Id
@@ -21,6 +22,14 @@ public class User {
     private String email;
     private String phone;
     private String wechat;
+    private String sex;
+    /*最后登录时间*/
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLoginTime;
+    /*用户创建时间*/
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createTime;
+
 
 
     public User() {}
@@ -76,5 +85,29 @@ public class User {
 
     public void setWechat(String wechat) {
         this.wechat = wechat;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

@@ -35,7 +35,6 @@ public class CommentController {
     }
 
 
-
     //删除商品信息
     @RequestMapping("/comment/delete/{id}")
     public String commentDelete(@PathVariable Long id,Model model,HttpSession session) {

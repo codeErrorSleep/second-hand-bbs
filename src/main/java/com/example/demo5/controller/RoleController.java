@@ -1,8 +1,8 @@
-package com.example.demo5.system.controller;
+package com.example.demo5.controller;
 
 
 import com.example.demo5.system.domain.Role;
-import com.example.demo5.system.service.RoleService;
+import com.example.demo5.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Pageable;

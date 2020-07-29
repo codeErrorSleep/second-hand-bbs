@@ -6,6 +6,8 @@ import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
 import org.hibernate.annotations.Any;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -31,9 +34,11 @@ public class IndexController {
 
     @Autowired
     private CommentService commentService;
+//    使用默认
+    private final Logger log= LoggerFactory.getLogger(IndexController.class);
 
 //    主页控制
-    @RequestMapping("/index")
+    @GetMapping({"/","/index"})
     String index(Model model, HttpSession session,@PageableDefault(size = 8, sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) {
 //        model.addAttribute("user",session.getAttribute("user"));
@@ -44,7 +49,7 @@ public class IndexController {
     }
 
 //搜索
-    @RequestMapping(value = "search",method = RequestMethod.POST)
+    @PostMapping("search")
     String search(@RequestParam String query,Model model, HttpSession session,
                   @PageableDefault(size = 8,
             direction = Sort.Direction.DESC) Pageable pageable){
@@ -54,7 +59,7 @@ public class IndexController {
     }
 
     //主页中不同的物品分类
-    @RequestMapping(value = "index{type}",method = RequestMethod.GET)
+    @GetMapping(value = "index{type}")
     String indexType(@PathVariable String type,Model model, HttpSession session,
                   @PageableDefault(size = 8,
                           direction = Sort.Direction.DESC) Pageable pageable){
@@ -62,6 +67,46 @@ public class IndexController {
         model.addAttribute("page", productService.listProductType(type, pageable));
         return "index";
     }
+
+
+
+//      前端发送测试
+//    @GetMapping("hello")
+//    @ResponseBody
+//    String hello(){
+//        return "hello";
+//    }
+//
+//
+//// 发送表单数据
+//    @PostMapping(value = "posthello")
+//    @ResponseBody
+//    String posthello(@RequestParam("data") String data){
+//        return data;
+//    }
+//
+//
+//    @PostMapping(value = "postuser")
+//    @ResponseBody
+//    String postuser(@RequestBody User user){
+//        String a=user.getUsername();
+//        System.out.println(a);
+//        return a;
+//    }
+//
+//
+//
+//
+//    // 发送表单数据
+//    @PostMapping(value = "posthellourl/{data}")
+//    @ResponseBody
+//    String posthellourl(@PathVariable String data){
+//
+//        return data;
+//    }
+
+
+
 
 
 }

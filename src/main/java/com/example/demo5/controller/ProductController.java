@@ -1,6 +1,5 @@
 package com.example.demo5.controller;
 
-import com.example.demo5.system.domain.AdminUser;
 import com.example.demo5.domain.Comment;
 import com.example.demo5.domain.Product;
 import com.example.demo5.domain.User;
@@ -66,12 +65,11 @@ public class ProductController {
             model.addAttribute("message","删除商品失败");
         }
 
-//        判断删除产品的的是管理员还是用户
+//      根据用户角色的不同返回不同的页面
         if (session.getAttribute("user")!=null){
             return "redirect:/product-manage";
         }
         else{
-            AdminUser adminUser=((AdminUser) session.getAttribute("adminUser"));
             return "redirect:/admin/admin/product-manage";
         }
 

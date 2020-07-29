@@ -1,6 +1,6 @@
 package com.example.demo5;
 
-import com.example.demo5.system.dao.RoleRepository;
+import com.example.demo5.dao.RoleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

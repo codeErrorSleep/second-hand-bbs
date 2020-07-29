@@ -1,7 +1,6 @@
-package com.example.demo5.system.service;
+package com.example.demo5.service;
 
-import com.example.demo5.domain.Product;
-import com.example.demo5.system.dao.RoleRepository;
+import com.example.demo5.dao.RoleRepository;
 import com.example.demo5.system.domain.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,12 +48,7 @@ public class RoleService {
     public boolean deleteRole(Long roleId){
         try {
             System.out.println(roleId.getClass().getName());
-            System.out.println(roleId);
-
-
             roleRepository.deleteByRoleId(roleId);
-
-
         }catch (Exception e){
             return false;
         }finally {

@@ -1,8 +1,6 @@
 package com.example.demo5.domain;
 
 
-import com.example.demo5.system.domain.AdminUser;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,9 +16,6 @@ public class Announce {
     private String title;
     private String type;
 
-    @ManyToOne
-    @JoinColumn(name="adminuser_id")
-    private AdminUser adminUser;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -57,13 +52,7 @@ public class Announce {
         this.type = type;
     }
 
-    public AdminUser getAdminUser() {
-        return adminUser;
-    }
 
-    public void setAdminUser(AdminUser adminUser) {
-        this.adminUser = adminUser;
-    }
 
     public Date getCreateTime() {
         return createTime;
