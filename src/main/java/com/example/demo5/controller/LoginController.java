@@ -62,18 +62,18 @@ public class LoginController {
      *@Author: qiuwenhao
      *@date: 2020/7/28
      */
-    @PostMapping("/userLogin")
-    String userLogin(User user, Model model, HttpSession session, @PageableDefault(size = 8, sort = {
-            "createTime"},
-            direction = Sort.Direction.DESC) Pageable pageable){
-        if (userService.login(user,session)) {
-            model.addAttribute("page",productService.listProduct(pageable));
-            return "redirect:/index";
-        } else {
-            model.addAttribute("message", "用户名和密码错误");
-            return "login";
-        }
-    }
+//    @PostMapping("/userLogin")
+//    String userLogin(User user, Model model, HttpSession session, @PageableDefault(size = 8, sort = {
+//            "createTime"},
+//            direction = Sort.Direction.DESC) Pageable pageable){
+//        if (userService.login(user,session)) {
+//            model.addAttribute("page",productService.listProduct(pageable));
+//            return "redirect:/index";
+//        } else {
+//            model.addAttribute("message", "用户名和密码错误");
+//            return "login";
+//        }
+//    }
 
 
     @RequestMapping("/logout")

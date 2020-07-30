@@ -6,6 +6,7 @@ import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
 import com.example.demo5.util.FileUtils;
+import com.example.demo5.util.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class ProductController {
     @RequestMapping("product-manage")
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.DESC) Pageable pageable) {
-        User user=((User) session.getAttribute("user"));
+        User user= SecurityUtils.getUser();
         model.addAttribute("page",productService.listProduct(user.getId(),pageable));
         return "product-manage";
     }
@@ -85,7 +86,7 @@ public class ProductController {
     public String productUpdate(@PathVariable Long id,Model model,HttpSession session) {
         Product product=productService.getAndConvert(id);
         model.addAttribute("product",product);
-        User user=((User) session.getAttribute("user"));
+        User user=SecurityUtils.getUser();
 //        model.addAttribute("page",productService.listProduct(user.getId(),pageable));
         return "product-update";
 

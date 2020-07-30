@@ -52,11 +52,11 @@
                         <a class="nav-link" th:href="index">首页
                             <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown" th:if="${session['user']!=null}">
+                    <li class="nav-item dropdown" th:if="${user!=null}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                            role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                           th:text="${session.user.getUsername()}">
+                           th:text="${user.getUsername()}">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" th:href="@{product-manage}">我的闲置</a>
@@ -67,13 +67,13 @@
 
                         </div>
                     </li>
-                    <li class="nav-item active " th:if="${session['user']==null}">
+                    <li class="nav-item active " th:if="${user==null}">
                         <a class="nav-link" th:href="login">登录
                             <span
                                     class="sr-only">(current)
 			                </span></a>
                     </li>
-                    <li class="nav-item active " th:if="${session['user']==null}">
+                    <li class="nav-item active " th:if="${user==null}">
                         <a class="nav-link" th:href="login">注册
                             <span
                                     class="sr-only">(current)

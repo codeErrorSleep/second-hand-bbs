@@ -5,6 +5,7 @@ import com.example.demo5.domain.Comment;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.CommentService;
 import com.example.demo5.service.ProductService;
+import com.example.demo5.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -29,7 +30,7 @@ public class CommentController {
     @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
     String uploadComment(@PathVariable Long id, Comment comment, Model model, HttpSession session){
         comment.setProduct(productService.getAndConvert(id));
-        comment.setNickname(((User) session.getAttribute("user")).getUsername());
+        comment.setNickname(SecurityUtils.getUser().getUsername());
         commentService.saveComment(comment);
         return "redirect:/product/"+id.toString();
     }
@@ -60,7 +61,7 @@ public class CommentController {
     @RequestMapping("comment-manage")
     public String commentManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
-        Long userid=((User) session.getAttribute("user")).getId();
+        Long userid= SecurityUtils.getUser().getId();
 //        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("commentList",commentService.listComment(userid,pageable));
         return "comment-manage";

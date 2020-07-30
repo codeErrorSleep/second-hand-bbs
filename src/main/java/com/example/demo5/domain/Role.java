@@ -1,8 +1,12 @@
 package com.example.demo5.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sys_role")
@@ -10,12 +14,18 @@ public class Role {
 
     @Id
     @GeneratedValue
+    @Column(name = "role_id")
     private Long roleId;
 
     @Column(nullable = false)
     private String roleName;
 //    @Column(nullable = false)
     private String roleKey;
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     /*启用状态*/
     private String status;
@@ -27,6 +37,15 @@ public class Role {
     private String remark;
     /*创建者(使用用户id或者name标记)*/
     private String create_by;
+
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public Long getRoleId() {
         return roleId;
@@ -91,4 +110,7 @@ public class Role {
     public void setCreate_by(String create_by) {
         this.create_by = create_by;
     }
+
+
+
 }

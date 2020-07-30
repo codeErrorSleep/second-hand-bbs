@@ -10,6 +10,7 @@
 
 ## 更新
 
+- 新增spring security权限管理
 - 重构部分代码
 - 更新新的角色管理
 - 在管理员页面增加数据可视化组件
@@ -22,6 +23,7 @@
 - spring boot
 - spring data jpa
 - mysql
+- spring security
 - thymeleaf
 - bootstrap4
 

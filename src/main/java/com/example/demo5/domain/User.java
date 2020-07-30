@@ -1,12 +1,16 @@
 package com.example.demo5.domain;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "sys_user")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -17,6 +21,24 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+
+    /*与role进行映射*/
+    @ManyToMany(targetEntity = Role.class,fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(name = "sys_user_role",
+            //joinColumns,当前对象在中间表中的外键
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            //inverseJoinColumns，对方对象在中间表的外键
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")})
+    private Set<Role> roles;
+
+
+    /*accountNonExpired、accountNonLocked、credentialsNonExpired、enabled
+    这四个属性分别用来描述用户的状态，表示账户是否没有过期、账户是否没有被锁定、密码是否没有过期、以及账户是否可用。*/
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
 
     private String email;
@@ -31,12 +53,67 @@ public class User {
     private Date createTime;
 
 
-
     public User() {}
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+
+    /*getAuthorities 方法返回用户的角色信息，我们在这个方法中把自己的 Role 稍微转化一下即可*/
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role : getRoles()) {
+            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+        }
+        return authorities;
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -47,13 +124,14 @@ public class User {
         this.id = id;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
     public void setUsername(String username) {
         this.username = username;
     }
-
+    @Override
     public String getPassword() {
         return password;
     }
@@ -110,4 +188,7 @@ public class User {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+
+
 }

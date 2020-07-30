@@ -5,6 +5,7 @@ import com.example.demo5.dao.UserRepository;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.ProductService;
 import com.example.demo5.service.UserService;
+import com.example.demo5.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Pageable;
@@ -29,18 +30,17 @@ public class UserController {
 
     //    主页控制
     @RequestMapping("/user-manage")
-    String usermanage(Model model, HttpSession session) {
-        model.addAttribute("user", session.getAttribute("user"));
+    String usermanage(Model model) {
+        model.addAttribute("user", SecurityUtils.getUser());
         return "user-manage";
     }
 
 
 //更新用户信息
     @RequestMapping(value = "/updateUser",method = RequestMethod.POST)
-    String updateUser(User user,Model model,HttpSession seesion){
+    String updateUser(User user){
         System.out.print(user.getId());
         System.out.print(user.getEmail());
-
         return "user-manage";
     }
 

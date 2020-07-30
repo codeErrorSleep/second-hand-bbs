@@ -115,7 +115,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (5),(5),(5),(5),(5),(5);
+INSERT INTO `hibernate_sequence` VALUES (32),(32),(32),(32),(32),(32);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +148,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (87,'dsafsadf','2019-12-05 22:56:43','fserfe@grsfs','34234',334,'工具','化妆类','esdfasef',39),(88,'ccc','2019-12-09 10:05:44','504250439@qq.com','13138283670',343,'dsff','电器类','dfdfdff',84),(89,'dsfgsdfg','2019-12-09 10:06:59','504250439@qq.com','13138283670',200,'bvbv','衣物类','dfdfdff',84),(91,'dafgfsg','2019-12-09 10:20:17','504250439@qq.com','13138283670',0,'gggg','电器类','fff',39),(92,'dafgfsg','2019-12-09 10:20:38','504250439@qq.com','13138283670',0,'gggg','电器类','fff',39),(93,'rdsgrds','2019-12-09 10:21:19','504250439@qq.com','13138283670',0,'vcvc','衣物类','dfdfdff',39),(94,'rdsgrds','2019-12-09 10:24:41','504250439@qq.com','13138283670',0,'vcvc','衣物类','dfdfdff',84),(111,'dsfgsdfgsd','2019-12-09 21:10:23','934387764@qq.com','13138283670',4545,'dsfgds','书籍类','fgf',39),(110,'asdfsadf','2019-12-09 20:56:20','934387764@qq.com','13138283670',2345,'dfgd','电器类','fff',40),(122,'asdfsaf','2019-12-11 14:02:04','asdf@fff.ff','13138283670',1324,'dsafs','生活类','fffaa',39),(125,'非常新','2019-12-12 11:00:50','504250439@qq.com','13138283670',123,'鼠标','电器类','fff',39),(130,'adfgdg','2019-12-12 11:11:37','934387764@qq.com','13138283670',324,NULL,'生活类','sefseeasf',NULL);
+INSERT INTO `product` VALUES (87,'dsafsadf','2019-12-05 22:56:43','fserfe@grsfs','34234',334,'工具','化妆类','esdfasef',39),(88,'ccc','2019-12-09 10:05:44','504250439@qq.com','13138283670',343,'dsff','电器类','dfdfdff',84),(89,'dsfgsdfg','2019-12-09 10:06:59','504250439@qq.com','13138283670',200,'bvbv','衣物类','dfdfdff',84),(91,'dafgfsg','2019-12-09 10:20:17','504250439@qq.com','13138283670',0,'gggg','电器类','fff',39),(92,'dafgfsg','2019-12-09 10:20:38','504250439@qq.com','13138283670',0,'gggg','电器类','fff',39),(93,'rdsgrds','2019-12-09 10:21:19','504250439@qq.com','13138283670',0,'vcvc','衣物类','dfdfdff',39),(94,'rdsgrds','2019-12-09 10:24:41','504250439@qq.com','13138283670',0,'vcvc','衣物类','dfdfdff',84),(111,'dsfgsdfgsd','2019-12-09 21:10:23','934387764@qq.com','13138283670',4545,'dsfgds','书籍类','fgf',39),(110,'asdfsadf','2019-12-09 20:56:20','934387764@qq.com','13138283670',2345,'dfgd','电器类','fff',40),(122,'asdfsaf','2019-12-11 14:02:04','asdf@fff.ff','13138283670',1324,'dsafs','生活类','fffaa',39),(125,'非常新','2019-12-12 11:00:50','504250439@qq.com','13138283670',123,'鼠标','电器类','fff',39),(130,'adfgdg','2019-12-12 11:11:37','934387764@qq.com','13138283670',324,NULL,'生活类','sefseeasf',NULL),(14,'的说法',NULL,'','',123,'大师傅第三方','书籍类','',1),(15,'的说法',NULL,'','',123,'大师傅第三方','书籍类','',1),(16,'ef esfaesf aef','2020-07-29 13:58:42','','',2222,'asdf asdf asdffaf','书籍类','',1),(17,'rtyerye','2020-07-29 14:23:05','','',546,'ytjy','书籍类','',1),(18,'规范公司 ','2020-07-29 14:27:57','','',423,'打发','书籍类','',1),(19,'安抚啊啊','2020-07-29 14:30:06','','',123,'反反复复','书籍类','',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,35 +172,8 @@ CREATE TABLE `product_imgs` (
 
 LOCK TABLES `product_imgs` WRITE;
 /*!40000 ALTER TABLE `product_imgs` DISABLE KEYS */;
-INSERT INTO `product_imgs` VALUES (87,'工具/小程序体验吗.png'),(88,'dsff/首页图.png'),(89,'bvbv/闲鱼等app.jpeg'),(91,'gggg/帮拿快递.jpg'),(92,'gggg/帮拿快递.jpg'),(93,'vcvc/闲置app图.jpg'),(94,'vcvc/闲置app图.jpg'),(111,'dsfgds/闲鱼等app.jpeg'),(110,'dfgd/小程序体验吗.png'),(122,'dsafs/闲置交易.png'),(122,'dsafs/闲置朋友圈打码.jpg'),(125,'鼠标/闲鱼等app.jpeg');
+INSERT INTO `product_imgs` VALUES (87,'1\\打发\\20200713082645142.jpg'),(88,'1\\打发\\20200713082645142.jpg'),(89,'1\\打发\\20200713082645142.jpg'),(91,'1\\打发\\20200713082645142.jpg'),(92,'1\\打发\\20200713082645142.jpg'),(93,'1\\打发\\20200713082645142.jpg'),(94,'1\\打发\\20200713082645142.jpg'),(111,'1\\打发\\20200713082645142.jpg'),(110,'1\\打发\\20200713082645142.jpg'),(122,'1\\打发\\20200713082645142.jpg'),(122,'1\\打发\\20200713082645142.jpg'),(125,'1\\打发\\20200713082645142.jpg'),(14,'1\\打发\\20200713082645142.jpg'),(15,'1\\打发\\20200713082645142.jpg'),(16,'1\\打发\\20200713082645142.jpg'),(17,'1\\打发\\20200713082645142.jpg'),(18,'1\\打发\\20200713082645142.jpg'),(19,'1\\打发\\20200713082645142.jpg');
 /*!40000 ALTER TABLE `product_imgs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `role`
---
-
-DROP TABLE IF EXISTS `role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `role` (
-  `role_id` bigint NOT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `remark` varchar(255) DEFAULT NULL,
-  `role_name` varchar(255) DEFAULT NULL,
-  `role_sign` varchar(255) DEFAULT NULL,
-  `user_id_create` bigint DEFAULT NULL,
-  PRIMARY KEY (`role_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -211,16 +184,15 @@ DROP TABLE IF EXISTS `sys_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sys_role` (
-  `id` int NOT NULL,
+  `role_id` int NOT NULL,
   `role_name` varchar(45) DEFAULT NULL,
   `role_key` varchar(45) DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
-  `update_timer` datetime DEFAULT NULL,
   `remark` varchar(45) DEFAULT NULL,
   `create_by` varchar(45) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -230,7 +202,7 @@ CREATE TABLE `sys_role` (
 
 LOCK TABLES `sys_role` WRITE;
 /*!40000 ALTER TABLE `sys_role` DISABLE KEYS */;
-INSERT INTO `sys_role` VALUES (1,'超级管理员','admin','1','2020-07-28 14:12:17',NULL,'系统最厉害的管理员','father',NULL),(2,'普通群众','common','1','2020-07-28 14:12:17',NULL,'普通用户',NULL,NULL);
+INSERT INTO `sys_role` VALUES (1,'ROLE_admin','admin','1','2020-07-28 14:12:17','系统最厉害的管理员','father','2020-07-28 14:12:17'),(2,'ROLE_user','common','1','2020-07-28 14:12:17','普通用户',NULL,'2020-07-28 14:12:17'),(11,'搜狗是s','森岛帆高',NULL,'2020-07-29 10:54:24','个搜狗是',NULL,NULL),(12,'ssss','ffff',NULL,NULL,'个搜狗是f',NULL,'2020-07-29 11:24:58'),(13,'gggggggg','gggggggg',NULL,NULL,'个搜狗是',NULL,'2020-07-29 11:25:57');
 /*!40000 ALTER TABLE `sys_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,6 +223,10 @@ CREATE TABLE `sys_user` (
   `sex` varchar(1) DEFAULT NULL,
   `last_login_time` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
+  `account_non_expired` bit(1) NOT NULL,
+  `account_non_locked` bit(1) NOT NULL,
+  `credentials_non_expired` bit(1) NOT NULL,
+  `enabled` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -261,7 +237,7 @@ CREATE TABLE `sys_user` (
 
 LOCK TABLES `sys_user` WRITE;
 /*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
-INSERT INTO `sys_user` VALUES (1,'504250439@qq.com','father','13138283670','father','dsfa',NULL,NULL,NULL),(3,'504250439@qq.com','asdfadsf','13138283670','adfadf','dsfa',NULL,NULL,'2020-07-28 16:36:01'),(40,NULL,'test',NULL,'test',NULL,NULL,NULL,NULL),(39,NULL,'amy',NULL,'amy',NULL,NULL,NULL,NULL),(42,NULL,'test2',NULL,'test2',NULL,NULL,NULL,NULL),(83,NULL,'etstsetes',NULL,'testetst2',NULL,NULL,NULL,NULL),(84,'504250439@qq.com','testse','13138283670','tests','sefseeasf',NULL,NULL,NULL),(109,'asdf@fff.ff','yes','45252','yes','fdgfgdsfg',NULL,NULL,NULL),(120,'934387764@qq.com','safesaef','13138283670','estt','sdaf',NULL,NULL,NULL),(126,'934387764@qq.com','father','13138283670','fatherfdsgg','esdfasef',NULL,NULL,NULL),(2,'504250439@qq.com','dfasdf','13138283670','adsfasd','dsfa',NULL,NULL,'2020-07-28 14:12:17');
+INSERT INTO `sys_user` VALUES (1,'504250439@qq.com','father','13138283670','father','dsfa',NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(3,'504250439@qq.com','asdfadsf','13138283670','adfadf','dsfa',NULL,NULL,'2020-07-28 16:36:01',_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(40,NULL,'test',NULL,'test',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(39,NULL,'amy',NULL,'amy',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(42,NULL,'test2',NULL,'test2',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(83,NULL,'etstsetes',NULL,'testetst2',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(84,'504250439@qq.com','testse','13138283670','tests','sefseeasf',NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(109,'asdf@fff.ff','yes','45252','yes','fdgfgdsfg',NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(120,'934387764@qq.com','safesaef','13138283670','estt','sdaf',NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(126,'934387764@qq.com','father','13138283670','fatherfdsgg','esdfasef',NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(2,'504250439@qq.com','dfasdf','13138283670','adsfasd','dsfa',NULL,NULL,'2020-07-28 14:12:17',_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(23,NULL,'dsaf',NULL,'test1',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(27,NULL,'dsaf',NULL,'test1',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(29,NULL,'dsaf',NULL,'test1',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0'),(31,NULL,'dsaf',NULL,'test1',NULL,NULL,NULL,NULL,_binary '\0',_binary '\0',_binary '\0',_binary '\0');
 /*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,13 +249,11 @@ DROP TABLE IF EXISTS `sys_user_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sys_user_role` (
-  `id` int NOT NULL,
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user_id` bigint NOT NULL,
+  `role_id` bigint NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FKhh52n8vd4ny9ff4x9fb8v65qx` (`role_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +262,7 @@ CREATE TABLE `sys_user_role` (
 
 LOCK TABLES `sys_user_role` WRITE;
 /*!40000 ALTER TABLE `sys_user_role` DISABLE KEYS */;
-INSERT INTO `sys_user_role` VALUES (1,1,1,NULL,NULL),(4,3,2,'2020-07-28 16:36:01',NULL);
+INSERT INTO `sys_user_role` VALUES (1,1),(2,1),(23,1),(31,30),(39,1);
 /*!40000 ALTER TABLE `sys_user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -301,4 +275,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-28 17:59:25
+-- Dump completed on 2020-07-30 17:57:37

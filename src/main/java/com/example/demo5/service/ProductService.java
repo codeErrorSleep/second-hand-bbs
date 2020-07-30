@@ -5,6 +5,7 @@ import com.example.demo5.dao.ProductRepository;
 import com.example.demo5.domain.Product;
 import com.example.demo5.domain.User;
 import com.example.demo5.util.FileUtils;
+import com.example.demo5.util.SecurityUtils;
 import javassist.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -91,7 +92,7 @@ public class ProductService {
      */
     public boolean saveProduct(Product product, MultipartFile[] files, HttpSession session)
             throws IllegalStateException, IOException{
-        product.setUser((User) session.getAttribute("user"));
+        product.setUser(SecurityUtils.getUser());
         List<String> imgs=saveImgs(product,files);
         product.setImgs(imgs);
         product.setCreateTime(new Date());

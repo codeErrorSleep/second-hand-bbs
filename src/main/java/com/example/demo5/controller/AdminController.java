@@ -3,6 +3,7 @@ package com.example.demo5.controller;
 import com.example.demo5.domain.Role;
 import com.example.demo5.domain.User;
 import com.example.demo5.service.*;
+import com.example.demo5.util.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class AdminController {
     String adminUserLogin(User user, Model model, HttpSession session){
         boolean hasUser=userService.login(user,session);
         if (hasUser && userService.isAdmin(session)){
-            log.info(session.getAttribute("user") +"成功登录到管理者界面");
+            log.info(SecurityUtils.getUser().getUsername() +"成功登录到管理者界面");
             return "redirect:/admin/admin-manage";
         } else {
             log.info("无法登录");
@@ -65,12 +66,7 @@ public class AdminController {
 
 //    管理页面
     @RequestMapping("admin/admin-manage")
-    String adminMange(Model model, HttpSession session) {
-//没登录是访问返回到登录界面
-        if(session.getAttribute("role")=="2"){
-            model.addAttribute("adminUser", new User());
-            return "admin/login";
-        }
+    String adminMange(Model model) {
         //            统计总数量
         long adminNum=adminUserService.adminCount();
         long userNum=userService.userCount();
@@ -78,9 +74,6 @@ public class AdminController {
         model.addAttribute("adminNum",adminNum );
         model.addAttribute("userNum", userNum);
         model.addAttribute("productNum", productNum);
-
-
-//        System.out.print(session.getAttribute("adminUser"));
         return "admin/admin-manage";
     }
 
