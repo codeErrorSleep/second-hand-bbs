@@ -10,6 +10,7 @@
 
 ## 更新
 
+- 新增thymeleaf模板,增加复用
 - 新增spring security权限管理
 - 重构部分代码
 - 更新新的角色管理

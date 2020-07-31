@@ -38,56 +38,59 @@
 <div id="wrapper" class="wrapper">
     <!-- Header -->
     <header class="header sticky-header">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" th:href="index">佛大叮当</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!--        <nav class="navbar navbar-expand-lg navbar-light ">-->
+<!--            <a class="navbar-brand" th:href="index">佛大叮当</a>-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
+<!--                    aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="index">首页
-                            <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown" th:if="${user!=null}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                           role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                           th:text="${user.getUsername()}">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/user/product-manage}">我的闲置</a>
-                            <a class="dropdown-item" th:href="@{/user/user-manage}">我的信息</a>
-                            <a class="dropdown-item" th:href="@{/user/comment-manage}">我的留言</a>
-                            <a class="dropdown-item" th:href="@{/user/announce-manage}">公告</a>
-                            <a class="dropdown-item" th:href="@{logout}">退出</a>
-                        </div>
-                    </li>
-                    <li class="nav-item active" th:if="${isAdmin}">
-                        <a class="nav-link" th:href="@{/admin/admin-manage}" >后台管理入口
-                            <span class="sr-only">(current)</span></a>
-                    </li>
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                <ul class="navbar-nav mr-auto">-->
+<!--                    <li class="nav-item active">-->
+<!--                        <a class="nav-link" th:href="index">首页-->
+<!--                            <span class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item dropdown" th:if="${user!=null}">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"-->
+<!--                           role="button"-->
+<!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
+<!--                           th:text="${user.getUsername()}">-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a class="dropdown-item" th:href="@{/user/product-manage}">我的闲置</a>-->
+<!--                            <a class="dropdown-item" th:href="@{/user/user-manage}">我的信息</a>-->
+<!--                            <a class="dropdown-item" th:href="@{/user/comment-manage}">我的留言</a>-->
+<!--                            <a class="dropdown-item" th:href="@{/user/announce-manage}">公告</a>-->
+<!--                            <a class="dropdown-item" th:href="@{logout}">退出</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active" th:if="${isAdmin}">-->
+<!--                        <a class="nav-link" th:href="@{/admin/admin-manage}" >后台管理入口-->
+<!--                            <span class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
 
 
-                    <li class="nav-item active " th:if="${user==null}">
-                        <a class="nav-link" th:href="login">登录
-                            <span
-                                    class="sr-only">(current)
-			                </span></a>
-                    </li>
-                    <li class="nav-item active " th:if="${user==null}">
-                        <a class="nav-link" th:href="login">注册
-                            <span
-                                    class="sr-only">(current)
-			                </span></a>
-                    </li>
+<!--                    <li class="nav-item active " th:if="${user==null}">-->
+<!--                        <a class="nav-link" th:href="login">登录-->
+<!--                            <span-->
+<!--                                    class="sr-only">(current)-->
+<!--			                </span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active " th:if="${user==null}">-->
+<!--                        <a class="nav-link" th:href="login">注册-->
+<!--                            <span-->
+<!--                                    class="sr-only">(current)-->
+<!--			                </span></a>-->
+<!--                    </li>-->
 
-                </ul>
-            </div>
-        </nav>
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </nav>-->
+
+
+        <div id="head" th:include="common/template :: common_head"></div>
 
 
         <!-- Header Middle Area -->
@@ -185,7 +188,6 @@
 
             </div>
         </div>
-
         <!--// Fullwidth Shop Area -->
         <!--// Page Conttent -->
     </main>
