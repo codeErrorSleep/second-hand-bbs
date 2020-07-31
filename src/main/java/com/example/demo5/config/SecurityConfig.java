@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/js/**", "/css/**", "/imgs/**","/img/**",path+"/**");
+        web.ignoring().antMatchers("/js/**", "/css/**", "/imgs/**","/img/**","/productsImgs/**");
     }
     /**
      * anyRequest          |   匹配所有请求路径
@@ -86,12 +86,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("admin")
-//                .antMatchers("/user/**").hasRole("user")
-                .antMatchers("/admin/login").permitAll()
+                .antMatchers("/user/**").hasRole("user")
+                .antMatchers("/adminlogin").permitAll()
                 .antMatchers("/index/**").permitAll()
                 .antMatchers("/product/**").permitAll()
                 .antMatchers("/register/**").permitAll()
                 .anyRequest().authenticated()
+//                测试全部不用权限
+//                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

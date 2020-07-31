@@ -112,9 +112,16 @@ public class ProductService {
         List<String> imgs= new ArrayList();
         if (null != files && files.length > 0) {
 //            文件夹完整的路径
-            String completePath=path+ File.separator+product.getUser().getId()+ File.separator+product.getTitle();
+//            类似于 "E://log/secondhand-bbs/productImgs/1/二手洗面奶
+            String completePath=path+ File.separator
+                                + "productsImgs"+File.separator
+                                + product.getUser().getId()+ File.separator
+                                +product.getTitle();
 //            存入数据库是的路径
-            String dataPath=product.getUser().getId()+ File.separator+product.getTitle();
+//            类似于 "productImgs/1/二手洗面奶
+            String dataPath="productsImgs"+File.separator
+                            +product.getUser().getId()+ File.separator
+                            +product.getTitle();
             for (MultipartFile file : files) {
 //                保存文件
                 if (file.getSize()!=0){

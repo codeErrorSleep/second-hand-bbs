@@ -164,18 +164,18 @@
                                     <div class="carousel-item active"
                                          th:if="${product.imgs.size()>0}">
                                         <img class="d-block w-100"
-                                             th:src="@{/{img}(img=${product.imgs.get(0)})}"
+                                             th:src="${product.imgs.get(0)}"
                                              alt="First slide">
                                     </div>
                                     <div class="carousel-item"
                                          th:if="${imglength>1}">
                                         <img class="d-block w-100"
-                                             th:src="@{/{img}(img=${product.imgs.get(1)})}"
+                                             th:src="${product.imgs.get(1)}"
                                              alt="Second slide">
                                     </div>
                                     <div class="carousel-item" th:if="${imglength>2}">
                                         <img class="d-block w-100"
-                                             th:src="@{/{img}(img=${product.imgs.get(2)})}"
+                                             th:src="${product.imgs.get(2)}"
                                              alt="Third slide">
                                     </div>
                                 </div>

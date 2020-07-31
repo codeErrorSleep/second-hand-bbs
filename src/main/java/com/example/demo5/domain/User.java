@@ -190,5 +190,54 @@ public class User implements UserDetails {
     }
 
 
+    /**
+     *  分辨当前用户是否为管理员
+     *@Author: qiuwenhao
+     *@date: 2020/7/31
+     */
+    public boolean isAdmin(){
+        for (Role role: roles) {
+            if (role.getRoleId()==1){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    /**
+     *  返回当前用户所有roles的id和name
+     *@Author: qiuwenhao
+     *@date: 2020/7/31
+     */
+    public String getAllRoles(){
+        String rolesStr="{";
+        for (Role role: roles) {
+            rolesStr=rolesStr+role.getRoleId()+" "+role.getRoleName()+",";
+        }
+        rolesStr=rolesStr+"}";
+        return rolesStr;
+    }
 
+
+    @Override
+    public String toString() {
+        String rolesStr=getAllRoles();
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + rolesStr +
+                ", accountNonExpired=" + accountNonExpired +
+                ", accountNonLocked=" + accountNonLocked +
+                ", credentialsNonExpired=" + credentialsNonExpired +
+                ", enabled=" + enabled +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", wechat='" + wechat + '\'' +
+                ", sex='" + sex + '\'' +
+                ", lastLoginTime=" + lastLoginTime +
+                ", createTime=" + createTime +
+                '}';
+    }
 }

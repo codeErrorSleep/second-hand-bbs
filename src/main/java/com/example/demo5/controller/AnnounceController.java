@@ -33,12 +33,12 @@ public class AnnounceController {
     }
 
 //    普通户用获取公告
-    @RequestMapping("announce-manage")
+    @RequestMapping("user/announce-manage")
     public String announceManage(Model model, HttpSession session,@PageableDefault(size = 8,
             sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("announceList",announceService.listAnnounce(pageable));
-        return "announce-manage";
+        return "user/announce-manage";
     }
 
 

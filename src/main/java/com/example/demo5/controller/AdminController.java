@@ -43,15 +43,15 @@ public class AdminController {
     private final Logger log= LoggerFactory.getLogger(AdminController.class);
 
 
-    @GetMapping({"admin/login","admin"})
+    @GetMapping({"adminlogin","admin"})
     String login(Model model) {
         model.addAttribute("adminUser", new User());
-        return "admin/login";
+        return "adminlogin";
     }
 
 
 //    登录到管理员
-    @RequestMapping(value = "admin/adminUserLogin",method = RequestMethod.POST)
+    @RequestMapping(value = "adminUserLogin",method = RequestMethod.POST)
     String adminUserLogin(User user, Model model, HttpSession session){
         boolean hasUser=userService.login(user,session);
         if (hasUser && userService.isAdmin(session)){
@@ -60,7 +60,7 @@ public class AdminController {
         } else {
             log.info("无法登录");
             model.addAttribute("message", "用户名和密码错误");
-            return "admin/login";
+            return "redirect:admin/login";
         }
     }
 

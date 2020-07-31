@@ -29,10 +29,10 @@ public class UserController {
 
 
     //    主页控制
-    @RequestMapping("/user-manage")
+    @RequestMapping("/user/user-manage")
     String usermanage(Model model) {
         model.addAttribute("user", SecurityUtils.getUser());
-        return "user-manage";
+        return "/user/user-manage";
     }
 
 
@@ -41,7 +41,7 @@ public class UserController {
     String updateUser(User user){
         System.out.print(user.getId());
         System.out.print(user.getEmail());
-        return "user-manage";
+        return "/user/user-manage";
     }
 
 

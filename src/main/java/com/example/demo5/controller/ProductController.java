@@ -47,17 +47,17 @@ public class ProductController {
     @RequestMapping("/product-input")
     public String productionInput(Model model,HttpSession session) {
         model.addAttribute("product", new Product());
-        model.addAttribute("user", session.getAttribute("user"));
+        model.addAttribute("user", SecurityUtils.getUser());
         return "product-input";
     }
 
 //商品管理界面
-    @RequestMapping("product-manage")
+    @RequestMapping("user/product-manage")
     public String productManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.DESC) Pageable pageable) {
         User user= SecurityUtils.getUser();
         model.addAttribute("page",productService.listProduct(user.getId(),pageable));
-        return "product-manage";
+        return "user/product-manage";
     }
 
 //删除商品信息
@@ -73,7 +73,7 @@ public class ProductController {
         }
 //      根据用户角色的不同返回不同的页面
         if (session.getAttribute("user")!=null){
-            return "redirect:/product-manage";
+            return "redirect:/user/product-manage";
         }
         else{
             return "redirect:/admin/admin/product-manage";
@@ -99,7 +99,7 @@ public class ProductController {
 //        保存上传信息
         Product p;
         p=productService.saveProduct(product);
-        return "redirect:/product-manage";
+        return "redirect:/user/product-manage";
     }
 
     /**

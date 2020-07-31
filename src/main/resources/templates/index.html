@@ -59,14 +59,19 @@
                            th:text="${user.getUsername()}">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{product-manage}">我的闲置</a>
-                            <a class="dropdown-item" th:href="@{user-manage}">我的信息</a>
-                            <a class="dropdown-item" th:href="@{comment-manage}">我的留言</a>
-                            <a class="dropdown-item" th:href="@{announce-manage}">公告</a>
+                            <a class="dropdown-item" th:href="@{/user/product-manage}">我的闲置</a>
+                            <a class="dropdown-item" th:href="@{/user/user-manage}">我的信息</a>
+                            <a class="dropdown-item" th:href="@{/user/comment-manage}">我的留言</a>
+                            <a class="dropdown-item" th:href="@{/user/announce-manage}">公告</a>
                             <a class="dropdown-item" th:href="@{logout}">退出</a>
-
                         </div>
                     </li>
+                    <li class="nav-item active" th:if="${isAdmin}">
+                        <a class="nav-link" th:href="@{/admin/admin-manage}" >后台管理入口
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+
+
                     <li class="nav-item active " th:if="${user==null}">
                         <a class="nav-link" th:href="login">登录
                             <span

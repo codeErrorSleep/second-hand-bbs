@@ -43,7 +43,14 @@ public class IndexController {
     String index(Model model,@PageableDefault(size = 16, sort = {"createTime"},
             direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("user", SecurityUtils.getUser());
+        model.addAttribute("isAdmin",SecurityUtils.isAdmin());
         model.addAttribute("page",productService.listProduct(pageable));
+
+        if (SecurityUtils.getUser()!=null){
+            log.info("当前用户为" + SecurityUtils.getUser().toString());
+            log.info("测试当前用户是否为管理员"+SecurityUtils.isAdmin());
+        }
+
         return "index";
     }
 

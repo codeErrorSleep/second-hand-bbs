@@ -47,7 +47,7 @@ public class CommentController {
         }
 //        判断删除产品的的是管理员还是用户
         if (session.getAttribute("user")!=null){
-            return "redirect:/comment-manage";
+            return "redirect:/user/comment-manage";
         }
         else{
             return "redirect:/admin/comment-manage";
@@ -58,13 +58,13 @@ public class CommentController {
 
 
     //普通用户管理留言信息
-    @RequestMapping("comment-manage")
+    @RequestMapping("user/comment-manage")
     public String commentManager(Model model,HttpSession session,@PageableDefault(size = 8,
             direction = Sort.Direction.ASC) Pageable pageable) {
         Long userid= SecurityUtils.getUser().getId();
 //        System.out.print(productService.listProduct(user.getId(),pageable));
         model.addAttribute("commentList",commentService.listComment(userid,pageable));
-        return "comment-manage";
+        return "user/comment-manage";
     }
 
 

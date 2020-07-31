@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>佛大叮当留言管理</title>
+    <title>佛大叮当个人管理</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -60,7 +60,8 @@
        th:href="@{index}">佛大叮当</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign out</a>
+            <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign
+                out</a>
         </li>
     </ul>
 </nav>
@@ -77,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active  text-dark" th:href="@{product-manage}">
+                        <a class="nav-link active  text-dark" th:href="@{/user/product-manage}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -89,7 +90,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" th:href="@{user-manage}">
+                        <a class="nav-link text-dark" th:href="@{/user/user-manage}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -102,7 +103,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                           th:href="@{comment-manage}">
+                           th:href="@{/user/comment-manage}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -116,7 +117,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  text-dark"
-                           th:href="@{announce-manage}">
+                           th:href="@{/user/announce-manage}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -133,6 +134,7 @@
             </div>
         </nav>
 
+
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="chartjs-size-monitor"
                  style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
@@ -146,61 +148,115 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">留言管理</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button type="button"
-                                class="btn btn-lg btn-outline-primary">发布</button>
-                    </div>
-                </div>
+                <h1 class="h2">个人信息</h1>
             </div>
 
             <div class="container-fluid">
                 <!-- Row -->
-                <div class="row table-responsive">
-                    <table class="table mb-4 responsive-table table-bordered bg-white">
-                        <thead class="thead-light2">
-                        <tr>
-                            <th scope="col" class="resizeable">留言时间</th>
-                            <th scope="col" class="resizeable">留言内容</th>
-                            <th scope="col" class="resizeable">留言者</th>
-                            <th scope="col" class="resizeable">留言所在商品</th>
-                            <th scope="col" width="1">Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody th:each="comment: ${commentList}">
-                        <tr>
-                            <td class="align-middle"  th:text="${comment.createTime}"></td>
-                            <td class="align-middle" th:text="${comment.content}"></td>
-                            <td class="align-middle" th:text="${comment.nickname}"></td>
-                            <td class="align-middle" th:text="${comment.product.title}"></td>
-                            <td class="align-middle text-md-center dropdown " data-label="Actions">
-                                <a class="btn btn-outline-primary dropdown-toggle" href="#"
-                                   role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    操作
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item"
-                                       th:href="@{/comment/delete/{id}(id=${comment.id})}">删除</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${commentList.totalPages}>1">
-                        <ul class="shop-toolbar-pagination">
-                            <li class="active"><a href="#" th:href="@{product-manage(commentList=${commentList.number}-1)}"
-                                                  th:unless="${commentList.first}">上一页</a></li>
-                            <li><a href="#" th:href="@{product-manage(commentList=${commentList.number}+1)}"
-                                   th:unless="${commentList.last}">下一页</a></li>
-                        </ul>
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-block">
+                                <center class="m-t-30">
+                                    <!--<img src="/imgs/people.png" class="img-circle" width="150"/>-->
+                                    <h4 class="card-title m-t-10" th:text="${user.username}"></h4>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)"
+                                                              class="link"><i
+                                                class="icon-people"></i> <font
+                                                class="font-medium">14</font></a>
+                                        </div>
+                                        <div class="col-4"><a href="javascript:void(0)"
+                                                              class="link"><i
+                                                class="icon-picture"></i> <font
+                                                class="font-medium">22</font></a>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
                     </div>
-
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-block">
+                                <form class="form-horizontal form-material" novalidate=""
+                                      method="post"
+                                      th:action="@{updateUser}" th:objict="${user}">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="hidden" placeholder="Johnathan Doe"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{id}">
+                                        </div>
+                                        <label class="col-md-12">姓名</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{username}"
+                                                   th:placeholder="${user.username}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email"
+                                                   class="form-control form-control-line"
+                                                   name="example-email" id="example-email"
+                                                   th:filed="*{email}"
+                                                   th:placeholder="${user.email}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{password}"
+                                                   th:placeholder="${user.password}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{phone}"
+                                                   th:placeholder="${user.phone}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">微信</label>
+                                        <div class="col-md-12">
+                                            <input type="text"
+                                                   class="form-control form-control-line"
+                                                   th:filed="*{wechat}"
+                                                   th:placeholder="${user.wechat}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success submit">更 新</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
                 </div>
             </div>
         </main>
     </div>
 </div>
+
+<div th:objict="${user}">
+    <div th:text="${user.email}"></div>
+</div>
+<div>ffffffffffff</div>
+<div th:placeholder="${user.email}"></div>
 
 
 <!----></body>
@@ -209,7 +265,6 @@
 <script src="/js/feather.min.js"></script>
 <script src="/js/Chart.min.js"></script>
 <script src="/js/dashboard.js"></script>
-
 
 
 </html>
