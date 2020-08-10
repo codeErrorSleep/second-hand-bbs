@@ -57,7 +57,7 @@
 
 <nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0"
-       th:href="@{index}">佛大叮当</a>
+       th:href="@{/index}">佛大叮当</a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">Sign out</a>
@@ -67,6 +67,8 @@
 
 <div class="container-fluid">
     <div class="row">
+<!--        <div id="head" th:include="common/template :: user_manager_head"></div>-->
+
         <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
@@ -168,29 +170,32 @@
                             <th scope="col" class="resizeable">类型</th>
                             <th scope="col" class="resizeable">简介</th>
                             <th scope="col" class="resizeable">发布日期</th>
-                            <th scope="col" width="1">sss</th>
+                            <th scope="col" width="1">操作</th>
                         </tr>
                         </thead>
                         <tbody th:each="product : ${page}">
                         <tr>
 
-                            <td class="align-middle" ><img th:src="@{/{imgs}(imgs=${product.imgs.get(0)})}" width="100"></td>
+                            <td class="align-middle" th:if="${product.imgs.size()>0}"><img th:src="@{/}+${product.imgs.get(0)}" width="100"></td>
+                            <td class="align-middle" th:if="${product.imgs.size()==0}">无</td>
                             <td class="align-middle"  th:text="${product.title}"></td>
                             <td class="align-middle" th:text="${product.price}"></td>
                             <td class="align-middle" th:text="${product.type}"></td>
                             <td class="align-middle" th:text="${product.content}"></td>
                             <td class="align-middle" th:text="${product.createTime}"></td>
                             <td class="align-middle text-md-center dropdown " data-label="Actions">
-                                <a class="btn btn-outline-primary dropdown-toggle" href="#"
-                                   role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    操作
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item"
-                                       th:href="@{/product/update/{id}(id=${product.id})}">修改</a>
-                                    <a class="dropdown-item"
-                                       th:href="@{/product/delete/{id}(id=${product.id})}">删除</a>
-                                </div>
+                                <button type="button" class="btn btn-warning btn-sm">Warning</button>
+                                <button type="button" class="btn btn-danger btn-sm">Danger</button>
+<!--                                <a class="btn btn-outline-primary dropdown-toggle" href="#"-->
+<!--                                   role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    操作-->
+<!--                                </a>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                                    <a class="dropdown-item"-->
+<!--                                       th:href="@{/product/update/{id}(id=${product.id})}">修改</a>-->
+<!--                                    <a class="dropdown-item"-->
+<!--                                       th:href="@{/product/delete/{id}(id=${product.id})}">删除</a>-->
+<!--                                </div>-->
                             </td>
                         </tr>
                         </tbody>

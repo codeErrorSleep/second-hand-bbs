@@ -68,7 +68,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
+<!--        <div id="head" th:include="common/template :: user_manager_head"></div>-->
+
+                <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -159,13 +161,13 @@
                         <div class="card">
                             <div class="card-block">
                                 <center class="m-t-30">
-                                    <!--<img src="/imgs/people.png" class="img-circle" width="150"/>-->
+                                    <img src="/img/author-image/author-image-2.png" class="img-circle" width="150"/>
                                     <h4 class="card-title m-t-10" th:text="${user.username}"></h4>
                                     <div class="row text-center justify-content-md-center">
                                         <div class="col-4"><a href="javascript:void(0)"
-                                                              class="link"><i
-                                                class="icon-people"></i> <font
-                                                class="font-medium">14</font></a>
+                                                              class="link">
+                                            <i class="icon-people"></i>
+                                            <font class="font-medium">14</font></a>
                                         </div>
                                         <div class="col-4"><a href="javascript:void(0)"
                                                               class="link"><i
@@ -195,8 +197,7 @@
                                         <div class="col-md-12">
                                             <input type="text"
                                                    class="form-control form-control-line"
-                                                   th:filed="*{username}"
-                                                   th:placeholder="${user.username}">
+                                                   th:filed="*{username}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -205,8 +206,7 @@
                                             <input type="email"
                                                    class="form-control form-control-line"
                                                    name="example-email" id="example-email"
-                                                   th:filed="*{email}"
-                                                   th:placeholder="${user.email}">
+                                                   th:filed="*{email}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -214,8 +214,7 @@
                                         <div class="col-md-12">
                                             <input type="password"
                                                    class="form-control form-control-line"
-                                                   th:filed="*{password}"
-                                                   th:placeholder="${user.password}">
+                                                   th:filed="*{password}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -223,8 +222,7 @@
                                         <div class="col-md-12">
                                             <input type="text"
                                                    class="form-control form-control-line"
-                                                   th:filed="*{phone}"
-                                                   th:placeholder="${user.phone}">
+                                                   th:filed="*{phone}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -232,8 +230,7 @@
                                         <div class="col-md-12">
                                             <input type="text"
                                                    class="form-control form-control-line"
-                                                   th:filed="*{wechat}"
-                                                   th:placeholder="${user.wechat}">
+                                                   th:filed="*{wechat}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -251,12 +248,6 @@
         </main>
     </div>
 </div>
-
-<div th:objict="${user}">
-    <div th:text="${user.email}"></div>
-</div>
-<div>ffffffffffff</div>
-<div th:placeholder="${user.email}"></div>
 
 
 <!----></body>

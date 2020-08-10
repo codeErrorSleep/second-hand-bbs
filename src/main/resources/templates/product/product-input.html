@@ -25,47 +25,9 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
-	<a class="navbar-brand" th:href="@{/index}">佛大叮当</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" th:href="@{/index}">首页
-					<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item dropdown"   th:if="${session['user']!=null}">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:text="${session.user.getUsername()}">
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" th:href="@{/product-manage}">我的闲置</a>
-					<a class="dropdown-item" th:href="@{/user-manage}">我的信息</a>
-					<a class="dropdown-item" th:href="@{/comment-manage}">我的留言</a>
-					<a class="dropdown-item" th:href="@{/announce-manage}">公告</a>
-					<a class="dropdown-item" th:href="@{/logout}">退出</a>
 
-				</div>
-			</li>
-			<li class="nav-item active " th:if="${user==null}">
-				<a class="nav-link" th:href="@{/login}">登录
-					<span
-							class="sr-only">(current)
-			                </span></a>
-			</li>
-			<li class="nav-item active " th:if="${user==null}">
-				<a class="nav-link" th:href="@{/register}">注册
-					<span
-							class="sr-only">(current)
-			                </span></a>
-			</li>
-
-		</ul>
-	</div>
-</nav>
+<div id="head" th:include="common/template :: common_head"></div>
 
 
 <div class="container">
@@ -73,7 +35,7 @@
   <div class="row ">
 
 	<div class="col-md-8 order-md-1">
-	  <form class="needs-validation" novalidate="" method="post" th:action="@{uploadProduct}" th:object="${product}"
+	  <form class="needs-validation" novalidate="" method="post" th:action="@{saveProduct}" th:object="${product}"
 			enctype="multipart/form-data">
 		<div class="row">
 		  <div class="col-md-6 mb-3">

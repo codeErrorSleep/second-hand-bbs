@@ -49,56 +49,6 @@
 
     <!-- Header -->
     <header class="header sticky-header">
-<!--        <nav class="navbar navbar-expand-lg navbar-light ">-->
-<!--            <a class="navbar-brand" th:href="@{/index}">佛大叮当</a>-->
-<!--            <button class="navbar-toggler" type="button" data-toggle="collapse"-->
-<!--                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
-<!--                    aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                <span class="navbar-toggler-icon"></span>-->
-<!--            </button>-->
-
-<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--                <ul class="navbar-nav mr-auto">-->
-<!--                    <li class="nav-item active">-->
-<!--                        <a class="nav-link" th:href="index">首页-->
-<!--                            <span class="sr-only">(current)</span></a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item dropdown" th:if="${user!=null}">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"-->
-<!--                           role="button"-->
-<!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
-<!--                           th:text="${user.getUsername()}">-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                            <a class="dropdown-item" th:href="@{/user/product-manage}">我的闲置</a>-->
-<!--                            <a class="dropdown-item" th:href="@{/user/user-manage}">我的信息</a>-->
-<!--                            <a class="dropdown-item" th:href="@{/user/comment-manage}">我的留言</a>-->
-<!--                            <a class="dropdown-item" th:href="@{/user/announce-manage}">公告</a>-->
-<!--                            <a class="dropdown-item" th:href="@{logout}">退出</a>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item active" th:if="${isAdmin}">-->
-<!--                        <a class="nav-link" th:href="@{/admin/admin-manage}" >后台管理入口-->
-<!--                            <span class="sr-only">(current)</span></a>-->
-<!--                    </li>-->
-
-
-<!--                    <li class="nav-item active " th:if="${user==null}">-->
-<!--                        <a class="nav-link" th:href="@{/login}">登录-->
-<!--                            <span-->
-<!--                                    class="sr-only">(current)-->
-<!--			                </span></a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item active " th:if="${user==null}">-->
-<!--                        <a class="nav-link" th:href="@{register}">注册-->
-<!--                            <span-->
-<!--                                    class="sr-only">(current)-->
-<!--			                </span></a>-->
-<!--                    </li>-->
-
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </nav>-->
         <div id="head" th:include="common/template :: common_head"></div>
 
         <!-- Header Middle Area -->
@@ -176,18 +126,18 @@
                                              alt="Third slide">
                                     </div>
                                 </div>
-<!--                                <a class="carousel-control-prev" href="#carouselExampleControls"-->
-<!--                                   role="button" data-slide="prev">-->
-<!--                                        <span class="carousel-control-prev-icon"-->
-<!--                                              aria-hidden="false"></span>-->
-<!--                                    <span class="sr-only">Previous</span>-->
-<!--                                </a>-->
-<!--                                <a class="carousel-control-next" href="#carouselExampleControls"-->
-<!--                                   role="button" data-slide="next">-->
-<!--                                        <span class="carousel-control-next-icon"-->
-<!--                                              aria-hidden="false"></span>-->
-<!--                                    <span class="sr-only">Next</span>-->
-<!--                                </a>-->
+                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                   role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"
+                                              aria-hidden="false"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                   role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon"
+                                              aria-hidden="false"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
 
 
@@ -242,7 +192,7 @@
                                     <div class="product-review">
                                         <div class="commentlist" th:if="${commentList}!=null"
                                              th:each="com: ${commentList}">
-                                            <div class="single-comment">
+                                            <div class="single-comment m-1">
                                                 <div class="single-comment-thumb">
                                                     <img
                                                             src="/img/author-image/author-image-2.png"

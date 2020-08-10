@@ -99,14 +99,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
+//                退出登录
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/index")
+                .and()
                 .csrf().disable().exceptionHandling()
                 .authenticationEntryPoint((req, resp, authException) -> {
-                            resp.setContentType("application/json;charset=utf-8");
-                            PrintWriter out = resp.getWriter();
-                            out.write("尚未登录，请先登录");
-                            out.flush();
-                            out.close();
+//                            resp.setContentType("application/json;charset=utf-8");
+//                            PrintWriter out = resp.getWriter();
+//                            out.write("尚未登录，请先登录");
+//                            out.flush();
+//                            out.close();
+
                         }
-                );
+                )
+        ;
     }
 }

@@ -105,6 +105,20 @@ public class UserService implements UserDetailsService {
 
     }
 
+    /**
+     * @Description: 更新用户的个人信息
+     * @Param: User
+     * @Return: boolean
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
+     */
+    public Boolean updateUesr(User user){
+
+
+        return true;
+    }
+
+
 
 //    统计总人数
     public long userCount(){

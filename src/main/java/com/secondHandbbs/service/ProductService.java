@@ -2,6 +2,7 @@ package com.secondHandbbs.service;
 
 import com.secondHandbbs.dao.ProductRepository;
 import com.secondHandbbs.domain.Product;
+import com.secondHandbbs.domain.User;
 import com.secondHandbbs.util.FileUtils;
 import com.secondHandbbs.util.SecurityUtils;
 import org.slf4j.Logger;
@@ -34,11 +35,42 @@ public class ProductService {
     private final Logger log= LoggerFactory.getLogger(ProductService.class);
 
 
+    /**
+     * @Description: 保存用户信息
+     * @Param: product
+     * @Return: product
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
+     */
     public Product saveProduct(Product product) {
-        product.setCreateTime(new Date());
+        product=updateProductInfo(product);
         return productRepository.save(product);
     }
 
+
+    /**
+     * @Description: 对Product实体进行局部更新处理(因为jpa缺少局部更新的功能),
+     *               所以在外层进行判断在进行更新,后续应该改换成mybatis,
+     * @Param: newProduct:用户输入的数据,需要返回
+     * @Return: Product
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
+     */
+    private Product updateProductInfo(Product newProduct){
+//        获取在数据库当中的数据
+        Product p=productRepository.getOne(newProduct.getId());
+        if (p.getImgs()!=null){
+            newProduct.setImgs(p.getImgs());
+        }
+        if(p.getComments()!=null){
+            newProduct.setComments(p.getComments());
+        }
+        newProduct.setCreateTime(new Date());
+        newProduct.setUser(SecurityUtils.getUser());
+        return newProduct;
+    }
+    
+    
 //    分页获取最新的商品信息
     public Page<Product> listProduct(Pageable pageable) {
         return productRepository.findAll(pageable);

@@ -56,7 +56,13 @@ public class ProductController {
         return "user/product-manage";
     }
 
-//删除商品信息
+    /**
+     * @Description: 删除商品信息
+     * @Param: [id, model, session, pageable]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
+     */
     @RequestMapping("/product/delete/{id}")
     public String productDelete(@PathVariable Long id,Model model,HttpSession session,
                            @PageableDefault(size = 8,
@@ -72,39 +78,48 @@ public class ProductController {
             return "redirect:/user/product-manage";
         }
         else{
-            return "redirect:/admin/admin/product-manage";
+            return "redirect:/admin/product-manage";
         }
 
     }
 
-    //修改商品信息页面
-    @RequestMapping("/product/update/{id}")
-    public String productUpdate(@PathVariable Long id,Model model,HttpSession session) {
+
+    @GetMapping("/product/update/{id}")
+    public String productUpdateUrl(@PathVariable Long id,Model model,HttpSession session) {
         Product product=productService.getAndConvert(id);
+        log.info("更新前"+product.toString());
+
         model.addAttribute("product",product);
         model.addAttribute("user", SecurityUtils.getUser());
-//        model.addAttribute("page",productService.listProduct(user.getId(),pageable));
         return "product/product-update";
 
     }
 
-    //    修改商品信息操作
-    @RequestMapping(value = "/product/update/{id}", method = RequestMethod.POST)
-    public String updateProduct(Product product,Model model,
-                                HttpSession session) throws IllegalStateException{
+    /**
+     * @Description: 更新商品信息
+     * @Param: [product, model, session]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
+     */
+    @PostMapping("/product/update/{id}")
+    public String updateProduct(Product product) throws IllegalStateException{
 //        保存上传信息
-        Product p;
-        p=productService.saveProduct(product);
+        productService.saveProduct(product);
+        log.info("更新商品信息成功:"+product.toString());
         return "redirect:/user/product-manage";
     }
 
+
     /**
-     *  上传商品信息
-     *@Author: qiuwenhao
-     *@date: 2020/7/29
+     * @Description: 上传新的商品信息
+     * @Param: [product, files, model, session, pageable]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/10
      */
-    @PostMapping("/uploadProduct")
-    public String uploadProduct(Product product,
+    @PostMapping("/saveProduct")
+    public String saveProduct(Product product,
                                 @RequestParam("files") MultipartFile[] files,
                                 Model model, HttpSession session,
                                 @PageableDefault(size = 8, sort = {"createTime"}, direction = Sort.Direction.DESC) Pageable pageable)
@@ -116,7 +131,7 @@ public class ProductController {
         }
         log.info("保存商品信息成功");
         model.addAttribute("page",productService.listProduct(pageable));
-        return "index";
+        return "redirect:/index";
     }
 
 
@@ -124,7 +139,7 @@ public class ProductController {
 
 
 //获取商品详细信息
-    @RequestMapping("/product/{id}")
+    @GetMapping("/product/{id}")
     public String product(@PathVariable Long id, Model model) {
         Product p=productService.getAndConvert(id);
 

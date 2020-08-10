@@ -211,6 +211,9 @@ public class User implements UserDetails {
      *@date: 2020/7/31
      */
     public String getAllRoles(){
+        if (roles==null){
+            return "null";
+        }
         String rolesStr="{";
         for (Role role: roles) {
             rolesStr=rolesStr+role.getRoleId()+" "+role.getRoleName()+",";

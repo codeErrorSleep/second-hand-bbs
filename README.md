@@ -10,6 +10,7 @@
 
 ## 更新
 
+- 修复商品上传问题
 - 新增thymeleaf模板,增加复用
 - 新增spring security权限管理
 - 重构部分代码
@@ -18,9 +19,14 @@
 
 
 
+### TODO
 
+- 修复用户更新功能
+- 解决角色与用户之间的冲突
+- 添加监控模块
 
 ## 技术栈
+
 - spring boot
 - spring data jpa
 - mysql

@@ -7,6 +7,7 @@
     <script src="/js/jquery-3.4.1.slim.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
+<!--    <script src="/secondHand/js/login.js"></script>-->
     <style>
         html,
         body {
@@ -77,15 +78,30 @@
         <p class="text-muted">&copy; 佛大闲置交易论坛</p>
     </form>
 
+
+
+
 </body>
+<!--    <script>-->
+<!--        function login() {-->
+<!--            $.ajax({-->
+<!--                method: "post", data: $('#form-login').serialize(),//jq提供的获取form表单数据的快捷方式，通过form内标签的name属性{"username":"admin","passwd":"123456"}-->
+<!--                url: "http://localhost/api/user/login",-->
+<!--                success: function (data) {//请求数据并返回结果给success,是一个对象，类似python的字典。回调函数。data只是一个函数的参数，跟上面的data不一样-->
+<!--                    if (data.error_code == 0) {//登陆成功，error_code=0。因为data是字典格式，可用点获取到-->
+<!--                        //成功-->
+<!--                        var sign = data.login_info.sign;//获取接口返回信息-->
+<!--                        var userid = data.login_info.userId;-->
+<!--                        console.log(sign);-->
+<!--                        console.log(userid);-->
+<!--                    }-->
+<!--                    else {-->
+<!--                        alert(data.msg)-->
+<!--                    }-->
+<!--                }-->
 
-<!--<script>-->
-    <!--var nameLength=$('#name').val().length-->
-    <!--var passwordLength=$('#password').val().length-->
-    <!--if(nameLength==0 ){-->
-        <!--$('#warning').hide();-->
-    <!--}-->
+<!--            })-->
 
-<!--</script>-->
-
+<!--        }-->
+<!--    </script>-->
 </html>

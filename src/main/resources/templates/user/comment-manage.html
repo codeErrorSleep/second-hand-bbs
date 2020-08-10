@@ -67,13 +67,16 @@
 
 <div class="container-fluid">
     <div class="row">
+<!--        <div id="head" th:include="common/template :: user_manager_head"></div>-->
+
         <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
+                    <!--此行用来防止列表被挡住-->
                     <li class="nav-item">
                         <a class="nav-link"
                            href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">
-                            闲置管理 <span class="sr-only">(current)</span>
+                            我会被挡住,不显示<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">

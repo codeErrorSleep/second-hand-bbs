@@ -184,7 +184,7 @@
                         <tbody th:each="product : ${page}">
                         <tr>
 
-                            <td class="align-middle" ><img th:src="@{/{imgs}(imgs=${product.imgs.get(0)})}" width="100"></td>
+                            <td class="align-middle" ><img th:src="@{/}+${product.imgs.get(0)}" width="100"></td>
                             <td class="align-middle"  th:text="${product.title}"></td>
                             <td class="align-middle" th:text="${product.price}"></td>
                             <td class="align-middle" th:text="${product.type}"></td>
@@ -196,8 +196,8 @@
                                     操作
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <!--<a class="dropdown-item"-->
-                                       <!--th:href="@{/product/update/{id}(id=${product.id})}">修改</a>-->
+<!--                                    <a class="dropdown-item" th:if="${}"-->
+<!--                                       th:href="@{/product/update/{id}(id=${product.id})}">修改</a>-->
                                     <a class="dropdown-item"
                                        th:href="@{/product/delete/{id}(id=${product.id})}">删除</a>
                                 </div>
@@ -209,9 +209,9 @@
 
                     <div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${page.totalPages}>1">
                         <ul class="shop-toolbar-pagination">
-                            <li class="active"><a href="#" th:href="@{product-manage(page=${page.number}-1)}"
+                            <li class="active"><a th:href="@{product-manage(page=${page.number}-1)}"
                                                   th:unless="${page.first}">上一页</a></li>
-                            <li><a href="#" th:href="@{product-manage(page=${page.number}+1)}"
+                            <li><a th:href="@{product-manage(page=${page.number}+1)}"
                                    th:unless="${page.last}">下一页</a></li>
                         </ul>
 

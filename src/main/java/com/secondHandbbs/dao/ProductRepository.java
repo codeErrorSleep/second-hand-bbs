@@ -27,4 +27,5 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
             " p.title LIKE ?1 OR p.content LIKE ?1 ", nativeQuery = true)
     Page<Product> findByQuery(String query, Pageable pageable);
 
+
 }

@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="http://code.z01.com/favicon.ico">
-<title>发布闲置</title>
+<title>更新闲置</title>
 <!-- Bootstrap 核心CSS -->
 
 
@@ -25,46 +25,10 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
-	<a class="navbar-brand" th:href="index">佛大叮当</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" th:href="index">首页
-					<span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item dropdown"   th:if="${user!=null}">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-				   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:text="${session.user.getUsername()}">
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" th:href="@{product-manage}">我的闲置</a>
-					<a class="dropdown-item" th:href="@{announce-manage}">我的留言</a>
-					<a class="dropdown-item" th:href="@{comment-manage}">公告</a>
-					<a class="dropdown-item" th:href="@{logout}">退出</a>
+<div id="head" th:include="common/template :: common_head"></div>
 
-				</div>
-			</li>
-			<li class="nav-item active " th:if="${user==null}">
-				<a class="nav-link" th:href="login">登录
-					<span
-							class="sr-only">(current)
-			                </span></a>
-			</li>
-			<li class="nav-item active " th:if="${user==null}">
-				<a class="nav-link" th:href="login">注册
-					<span
-							class="sr-only">(current)
-			                </span></a>
-			</li>
 
-		</ul>
-	</div>
-</nav>
 <div class="container">
 
   <div class="row ">
@@ -83,8 +47,21 @@
 			</div>
 		  </div>
 		</div>
-		  <input type="number" class="form-control hide" id="id" th:field="*{id}"
-				 placeholder="" required="">
+		  <label for="productId">物品id</label>
+		  <input type="number" class="form-control hide" id="productId" th:field="*{id}"
+				 placeholder="" required="" readonly>
+
+		  <div class="row">
+			  <div class="col-md-6 mb-3">
+				  <label for="title">物品标题</label>
+				  <input type="text" class="form-control" id="title" th:field="*{title}"
+						 placeholder="" required="">
+				  <div class="invalid-feedback">
+					  标题不能为空
+				  </div>
+			  </div>
+		  </div>
+
 
 		  <div class="form-group mb-3">
 			  <label>物品类型</label>
@@ -118,9 +95,9 @@
 		  <label for="wechat">wechat</label>
 		  <input type="text" class="form-control" id="wechat" th:field="*{wechat}">
 		</div>
-		
+
 		<hr class="mb-4">
-		<button class="btn btn-primary btn-lg btn-block" type="submit">发   布</button>
+		<button class="btn btn-primary btn-lg btn-block" type="submit">更 新</button>
 	  </form>
 	</div>
   </div>
