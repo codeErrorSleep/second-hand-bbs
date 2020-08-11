@@ -86,6 +86,10 @@ public class ProductService {
         return productRepository.findByQuery(query,pageable);
     }
 
+    public List<Product> listProduct(Product p){
+        return productRepository.findByTitleAndType(p.getTitle(),p.getType());
+    }
+
     //    分页获取需要的分类
     public Page<Product> listProductType(String type,Pageable pageable) {
         return productRepository.findByType(type,pageable);

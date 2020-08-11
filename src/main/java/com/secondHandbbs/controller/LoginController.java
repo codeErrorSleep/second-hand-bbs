@@ -2,6 +2,7 @@ package com.secondHandbbs.controller;
 
 
 import com.secondHandbbs.domain.User;
+import com.secondHandbbs.service.LoginService;
 import com.secondHandbbs.service.ProductService;
 import com.secondHandbbs.service.UserService;
 import org.slf4j.Logger;
@@ -22,6 +23,8 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private LoginService loginService;
     @Autowired
     private ProductService productService;
     //    使用默认
@@ -45,11 +48,17 @@ public class LoginController {
 
 
 
-    //    路径映射
+    /**
+     * @Description: 注册用户
+     * @Param: [user, model]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/11
+     */
     @PostMapping("/registerUser")
     String registerUser(User user, Model model) {
         log.info("准备注册用户信息"+user.getUsername());
-        if(userService.registerUser(user)){
+        if(loginService.registerUser(user)){
             log.info("成功注册用户信息"+user.getUsername());
             return "login";
         }
@@ -61,11 +70,6 @@ public class LoginController {
     }
 
 
-//    @GetMapping("/logout")
-//    public String logout(HttpSession session) {
-//        session.removeAttribute("user");
-//        return "redirect:/index";
-//    }
 
 
 }

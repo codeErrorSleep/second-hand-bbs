@@ -43,19 +43,31 @@ public class IndexController {
             log.info("测试当前用户是否为管理员"+SecurityUtils.isAdmin());
         }
 
+
+
         return "index";
     }
 
-//搜索
-    @PostMapping("product/search")
+
+    /**
+     * @Description: 搜索用品
+     * @Param: [query, model, pageable]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/11
+     */
+    @PostMapping("/search")
     String search(@RequestParam String query,Model model,
                   @PageableDefault(size = 8, direction = Sort.Direction.DESC) Pageable pageable){
+        if ("".equals(query)){
+            return "/index";
+        }
         model.addAttribute("page", productService.listProduct("%"+query+"%", pageable));
-        return "search";
+        return "/product/search";
     }
 
     //主页中不同的物品分类
-    @GetMapping(value = "index{type}")
+    @GetMapping(value = "index/{type}")
     String indexType(@PathVariable String type,Model model,
                   @PageableDefault(size = 8, direction = Sort.Direction.DESC) Pageable pageable){
         model.addAttribute("type",type);

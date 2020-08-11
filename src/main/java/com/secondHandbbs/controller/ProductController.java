@@ -138,10 +138,23 @@ public class ProductController {
 
 
 
-//获取商品详细信息
+
+    /**
+     * @Description: 返回商品页面
+     * @Param: [id, model]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/11
+     */
     @GetMapping("/product/{id}")
     public String product(@PathVariable Long id, Model model) {
         Product p=productService.getAndConvert(id);
+
+//        获取同类推荐
+        List<Product> listProducts=productService.listProduct(p);
+        listProducts.forEach(
+                item->{ log.info("同类推荐商品:"+item.toString()); });
+        model.addAttribute("listProducts",listProducts);
 
 //        测试添加留言
         List<Comment> commentList=commentService.listCommentByProductId(id);

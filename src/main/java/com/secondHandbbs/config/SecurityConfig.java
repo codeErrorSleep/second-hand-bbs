@@ -1,5 +1,6 @@
 package com.secondHandbbs.config;
 
+import com.secondHandbbs.service.LoginService;
 import com.secondHandbbs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String path;
 
     @Autowired
-    UserService userService;
+    LoginService loginService;
 
     /*
     * 对密码不进行加密
@@ -57,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(loginService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Override
@@ -86,6 +87,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasRole("user")
                 .antMatchers("/adminlogin").permitAll()
                 .antMatchers("/index/**").permitAll()
+                .antMatchers("/search/**").permitAll()
                 .antMatchers("/product/**").permitAll()
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/registerUser/**").permitAll()

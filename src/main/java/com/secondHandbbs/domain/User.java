@@ -44,6 +44,8 @@ public class User implements UserDetails {
     private String email;
     private String phone;
     private String wechat;
+
+    /*性别*/
     private String sex;
     /*最后登录时间*/
     @Temporal(TemporalType.TIMESTAMP)
@@ -70,6 +72,20 @@ public class User implements UserDetails {
         }
         return authorities;
     }
+
+    /**
+     * @Description: 设置所有用户属性
+     * @Author: qiuwenhao
+     * @date: 2020/8/11
+     */
+    public void setSecurity(){
+        this.setAccountNonExpired(true);
+        this.setAccountNonLocked(true);
+        this.setCredentialsNonExpired(true);
+        this.setEnabled(true);
+    }
+
+
 
 
     @Override

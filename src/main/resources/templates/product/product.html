@@ -58,7 +58,7 @@
                     <div class="col-lg-4 col-12">
                         <form class="header-search">
                             <input type="text" placeholder="Search product...">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit"><img src="/imgs/icon/search.svg"></button>
                         </form>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-7 col-12">
@@ -246,67 +246,19 @@
                             <div class="single-widget widget-related-product">
                                 <h5 class="widget-title">同类推荐</h5>
                                 <ul>
-                                    <li>
+                                    <li th:each="p : ${listProducts}">
                                         <div class="product-item">
                                             <div class="product-item-images">
-                                                <a href="product-details-right-sidebar.html"
-                                                   class="product-item-image-inner">
-                                                    <img
-                                                            th:src="@{/}+${product.imgs.get(0)}"
-                                                            alt="product image">
+                                                <a th:href="@{/product/{id}(id=${p.id})}" class="product-item-image-inner">
+                                                    <img th:if="${p.imgs.size()>0}" th:src="@{/}+${p.imgs.get(0)}" alt="product image">
                                                 </a>
                                             </div>
                                             <div class="product-item-content">
                                                 <div class="product-item-content-left">
-                                                    <h5><a
-                                                            href="product-details-right-sidebar.html">test</a>
+                                                    <h5 th:text="${p.title}">
                                                     </h5>
-                                                    <div class="price-box">
-                                                        <span class="pricebox-price">100</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="product-item">
-                                            <div class="product-item-images">
-                                                <a href="product-details-right-sidebar.html"
-                                                   class="product-item-image-inner">
-                                                    <img th:src="@{/}+${product.imgs.get(0)}"
-                                                         alt="product image">
-                                                </a>
-                                            </div>
-                                            <div class="product-item-content">
-                                                <div class="product-item-content-left">
-                                                    <h5><a
-                                                            href="product-details-right-sidebar.html">test</a>
-                                                    </h5>
-                                                    <div class="price-box">
-                                                        <span class="pricebox-price">100</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="product-item">
-                                            <div class="product-item-images">
-                                                <a href="product-details-right-sidebar.html"
-                                                   class="product-item-image-inner">
-                                                    <img th:src="@{/}+${product.imgs.get(0)}"
-                                                         alt="product image">
-                                                </a>
-                                            </div>
-                                            <div class="product-item-content">
-                                                <div class="product-item-content-left">
-                                                    <h5><a
-                                                            href="product-details-right-sidebar.html">test</a>
-                                                    </h5>
-                                                    <div class="price-box">
-                                                        <span class="pricebox-price">100</span>
+                                                    <div class="price-box" >
+                                                        <span class="pricebox-price" th:text="${p.price}">100</span>
                                                     </div>
                                                 </div>
                                             </div>

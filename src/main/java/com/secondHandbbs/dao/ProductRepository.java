@@ -27,5 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>,
             " p.title LIKE ?1 OR p.content LIKE ?1 ", nativeQuery = true)
     Page<Product> findByQuery(String query, Pageable pageable);
 
+    @Query(value = "SELECT * FROM db_second_hand_bbs.product where title like ?1 or type=?2 order by create_time desc LIMIT 3",nativeQuery = true)
+    List<Product> findByTitleAndType(String title,String type);
 
 }

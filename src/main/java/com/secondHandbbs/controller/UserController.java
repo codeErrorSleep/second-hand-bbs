@@ -30,19 +30,24 @@ public class UserController {
     //    主页控制
     @GetMapping("/user/user-manage")
     public String usermanage(Model model) {
-        log.info("当前用户信息"+SecurityUtils.getUser().toString());
-        model.addAttribute("user", SecurityUtils.getUser());
+        log.info("当前用户信息"+userService.getUserById(SecurityUtils.getUser().getId()));
+        model.addAttribute("user",userService.getUserById(SecurityUtils.getUser().getId()));
         return "/user/user-manage";
     }
 
 
-//更新用户信息
+    /**
+     * @Description: 更新用户对象信息
+     * @Param: [user]
+     * @Return: java.lang.String
+     * @Author: qiuwenhao
+     * @date: 2020/8/11
+     */
     @PostMapping("/user/updateUser")
     public String updateUser(User user){
-
-        log.info(user.toString());
-//        userService.updateUser(user);
-        return "/user/user-manage";
+        user=userService.updateUesr(user);
+        log.info("更新后的user信息:"+user);
+        return "redirect:/user/user-manage";
     }
 
 

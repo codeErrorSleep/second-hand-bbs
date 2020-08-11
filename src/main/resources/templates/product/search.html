@@ -153,9 +153,9 @@
                 <!--<div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${page.totalPages}>1">-->
                 <div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${page.totalPages}>1">
                     <ul class="shop-toolbar-pagination">
-                        <li class="active"><a href="#" th:href="@{index(page=${page.number}-1)}"
+                        <li class="active"><a href="#" th:href="@{search(page=${page.number}-1)}"
                                               th:unless="${page.first}">上一页</a></li>
-                        <li><a href="#" th:href="@{index(page=${page.number}+1)}"
+                        <li><a href="#" th:href="@{search(page=${page.number}+1)}"
                                th:unless="${page.last}">下一页</a></li>
                     </ul>
 

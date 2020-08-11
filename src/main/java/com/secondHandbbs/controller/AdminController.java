@@ -26,6 +26,8 @@ public class AdminController {
 
     @Autowired
     private AdminUserService adminUserService;
+    @Autowired
+    private LoginService loginService;
 
     @Autowired
     private UserService userService;
@@ -53,7 +55,7 @@ public class AdminController {
 //    登录到管理员
     @RequestMapping(value = "adminUserLogin",method = RequestMethod.POST)
     String adminUserLogin(User user, Model model, HttpSession session){
-        boolean hasUser=userService.login(user,session);
+        boolean hasUser=loginService.login(user,session);
         if (hasUser && userService.isAdmin(session)){
             log.info(SecurityUtils.getUser().getUsername() +"成功登录到管理者界面");
             return "redirect:/admin/admin-manage";

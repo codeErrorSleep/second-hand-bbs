@@ -50,7 +50,7 @@
                         <form class="header-search" th:action="@{/search}" method="post">
                             <input type="text" placeholder="搜索闲置...." name="query"
                                    th:value="${query}">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit"><img src="/imgs/icon/search.svg"></button>
                         </form>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-7 col-12">
@@ -73,14 +73,14 @@
 
     <div class="btn-group-vertical float-left">
         <a type="button" class="btn btn-primary" th:href="@{/index}">全部</a>
-        <a type="button" class="btn btn-secondary" th:href="@{/index{type}(type='书籍类')}">书籍类
+        <a type="button" class="btn btn-secondary" th:href="@{/index/{type}(type='书籍类')}">书籍类
         </a>
-        <a type="button" class="btn btn-success" th:href="@{/index{type}(type='生活类')}">生活类
+        <a type="button" class="btn btn-success" th:href="@{/index/{type}(type='生活类')}">生活类
         </a>
-        <a type="button" class="btn btn-danger" th:href="@{/index{type}(type='电器类')}">电器类</a>
-        <a type="button" class="btn btn-warning" th:href="@{/index{type}(type='衣物类')}">衣物类
+        <a type="button" class="btn btn-danger" th:href="@{/index/{type}(type='电器类')}">电器类</a>
+        <a type="button" class="btn btn-warning" th:href="@{/index/{type}(type='衣物类')}">衣物类
         </a>
-        <a type="button" class="btn btn-info" th:href="@{/index{type}(type='化妆类')}">化妆类</a>
+        <a type="button" class="btn btn-info" th:href="@{/index/{type}(type='化妆类')}">化妆类</a>
     </div>
 
 
@@ -126,10 +126,12 @@
                 <!--<div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${page.totalPages}>1">-->
                 <div class="shop-page-toolbars shop-page-toolbars-bottom" th:if="${page.totalPages}!=null">
                     <ul class="shop-toolbar-pagination" th:if="${page.totalPages}>1">
-                        <li class="active"><a href="#" th:href="@{index(page=${page.number}-1)}"
-                                              th:unless="${page.first}">上一页</a></li>
-                        <li><a href="#" th:href="@{index(page=${page.number}+1)}"
-                               th:unless="${page.last}">下一页</a></li>
+                        <li class="active">
+                            <a class="btn btn-warning btn-lg" role="button" th:href="@{index(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-warning btn-lg" role="button" th:href="@{index(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
+                        </li>
                     </ul>
 
                 </div>
