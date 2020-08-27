@@ -29,6 +29,7 @@ public class LoginController {
     private final Logger log= LoggerFactory.getLogger(LoginController.class);
 
 
+
     @GetMapping("/login")
     String login(Model model) {
         model.addAttribute("user", new User());
