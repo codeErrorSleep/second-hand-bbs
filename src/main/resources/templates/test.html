@@ -14,9 +14,10 @@
 
 
 <button onclick="test()">验证码</button>
-<img id="myImage" src="">
+<img id="myImage" src="" onclick="test()">
 </body>
     <script>
+        test();
         function test() {
             $.ajax({
                 type:"get",

@@ -10,6 +10,7 @@
 
 ## 更新
 
+- 新增验证码注册效果(功能仍为完善)
 - 修改搜素功能和同类推荐
 - 优化注册与登录模块
 - 修复商品上传问题
@@ -33,6 +34,7 @@
 - spring data jpa
 - mysql
 - spring security
+- redis
 - thymeleaf
 - bootstrap4
 
