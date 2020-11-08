@@ -83,8 +83,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("admin")
-//                .antMatchers("/user/**").hasRole("user")
+                .antMatchers("/admin/**").hasRole("admin")
+                .antMatchers("/user/**").hasRole("user")
 //                .antMatchers("/adminlogin").permitAll()
 //                .antMatchers("/index/**").permitAll()
 //                .antMatchers("/search/**").permitAll()
@@ -95,12 +95,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                测试全部不用权限
                 .anyRequest().permitAll()
 //                登录页面设置
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/userLogin")
-//                .defaultSuccessUrl("/index")
-//                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/userLogin")
+                .defaultSuccessUrl("/index")
+                .permitAll()
 
                 .and()
 //                退出登录

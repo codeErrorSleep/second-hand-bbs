@@ -222,6 +222,7 @@ public class User implements UserDetails {
     
     
     /**
+     * StackOverflowError
      *  返回当前用户所有roles的id和name
      *@Author: qiuwenhao
      *@date: 2020/7/31
@@ -249,12 +250,12 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        String rolesStr=getAllRoles();
+//        String rolesStr=getAllRoles();
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + rolesStr +
+//                ", roles=" + rolesStr +
                 ", accountNonExpired=" + accountNonExpired +
                 ", accountNonLocked=" + accountNonLocked +
                 ", credentialsNonExpired=" + credentialsNonExpired +

@@ -60,14 +60,14 @@ public class Comment {
         this.product = product;
     }
 
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", nickname='" + nickname + '\'' +
-                ", content='" + content + '\'' +
-                ", createTime=" + createTime +
-                ", product=" + product +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Comment{" +
+//                "id=" + id +
+//                ", nickname='" + nickname + '\'' +
+//                ", content='" + content + '\'' +
+//                ", createTime=" + createTime +
+//                ", product=" + product +
+//                '}';
+//    }
 }

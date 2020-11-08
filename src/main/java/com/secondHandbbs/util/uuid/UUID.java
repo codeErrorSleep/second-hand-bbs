@@ -1,7 +1,7 @@
 package com.secondHandbbs.util.uuid;
 
 
-import com.sun.xml.internal.ws.util.UtilException;
+//import com.sun.xml.internal.ws.util.UtilException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -469,8 +469,10 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
         }
         catch (NoSuchAlgorithmException e)
         {
-            throw new UtilException(e);
+            System.out.println(e);
+//            throw new UtilException(e);
         }
+        return new SecureRandom();
     }
 
     /**
